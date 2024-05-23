@@ -1,0 +1,17 @@
+.footer {
+  display: flex;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  background: #e0f3ff;
+  padding: 10px;
+}
+
+.block-blue{
+  background: #e0f3ff;
+}
+
+.block-padding-small{
+  padding-top: 2vh;
+  padding-bottom: 1vh;
+}
