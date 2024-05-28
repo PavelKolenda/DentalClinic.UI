@@ -1,0 +1,57 @@
+<div class="registration-form-container">
+  <form class="registration-form" [formGroup]="userRegistrationForm">
+    <div>
+      <label for="email"><span class="red-color">*</span>Электронная почта:</label>
+      <div>
+        <input type="text" id="email" formControlName="email">
+      </div>
+      @if(!userRegistrationForm.controls.email.valid && userRegistrationForm.controls.email.touched){
+        <small style="color: red;">Поля обязательно для заполнения</small>
+      }
+    </div>
+    <div>
+      <label for="password"><span class="red-color">*</span>Пароль:</label>
+      <div>
+        <input type="password" id="password" formControlName="password">
+      </div>
+      @if(!userRegistrationForm.controls.password.valid && userRegistrationForm.controls.password.touched){
+        <small style="color: red;">Поля обязательно для заполнения</small>
+      }
+    </div>
+    <div>
+      <label for="name"><span class="red-color">*</span>Имя:</label>
+      <div>
+        <input type="text" id="name" formControlName="name">
+      </div>
+      @if(!userRegistrationForm.controls.name.valid && userRegistrationForm.controls.name.touched){
+        <small style="color: red;">Поля обязательно для заполнения</small>
+      }
+    </div>
+    <div>
+      <label for="surname"><span class="red-color">*</span>Фамилия:</label>
+      <div>
+        <input type="text" id="surname" formControlName="surname">
+      </div>
+      @if(!userRegistrationForm.controls.surname.valid && userRegistrationForm.controls.surname.touched){
+        <small style="color: red;">Поля обязательно для заполнения</small>
+      }
+    </div>
+    <div>
+      <label for="patronymic">Отчество:</label>
+      <div>
+        <input type="text" id="patronymic" formControlName="patronymic">
+      </div>
+    </div>
+    <div>
+      <label for="birthDate"><span class="red-color">*</span>Дата рождения:</label>
+      <div>
+        <input type="date" id="birthDate" formControlName="birthDate" [max]="today">
+      </div>
+      @if(!userRegistrationForm.controls.birthDate.valid && userRegistrationForm.controls.birthDate.touched){
+        <small style="color: red;">Поля обязательно для заполнения</small>
+      }
+    </div>
+    <small class="have-account-link"><a routerLink="">Уже есть аккаунт?</a></small>
+    <button type="submit" class="registration-button" (click)="submitForm()">Регистрация</button>
+  </form>
+</div>
