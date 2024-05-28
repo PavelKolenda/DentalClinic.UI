@@ -1,0 +1,25 @@
+<div class="registration-form-container">
+  <form class="registration-form" [formGroup]="userLoginForm">
+
+    <div>
+      <label for="email"><span class="red-color">*</span>Электронная почта:</label>
+      <div>
+        <input type="text" id="email" formControlName="email">
+      </div>
+      @if (!userLoginForm.controls.email.valid && userLoginForm.controls.email.touched) {
+        <small style="color: red;">Поля обязательно для заполнения</small>
+      }
+    </div>
+    <div>
+      <label for="password"><span class="red-color">*</span>Пароль:</label>
+      <div>
+        <input type="password" id="password" formControlName="password">
+      </div>
+      @if (!userLoginForm.controls.password.valid && userLoginForm.controls.password.touched) {
+        <small style="color: red;">Поля обязательно для заполнения</small>
+      }
+    </div>
+    <small class="have-account-link"><a routerLink="/registration">Нет аккаунта?</a></small>
+    <button type="submit" class="registration-button" (click)="login()">Войти</button>
+  </form>
+</div>
