@@ -1,0 +1,33 @@
+<div class="header block-light-blue">
+  <div>
+    <div class="logo-uz">учреждения здравоохранения</div>
+    <div class="logo-name-container">
+      <div class="logo-name">
+        Центральная городская
+        <br>
+        стоматологическая поликлиника
+      </div>
+      города Гродно
+    </div>
+  </div>
+
+  @if (authService.currentUserSignal() === null || authService.currentUserSignal() === undefined) {
+    <div>
+      <button class="auth-button" routerLink="/login">Войти</button>
+      <button class="auth-button" routerLink="/registration">Регистрация</button>
+    </div>
+  }
+
+
+  @if (authService.currentUserSignal()) {
+    @if (this.authService.currentUserSignal()?.roles!.includes('Admin')) {
+      <div><a routerLink="" class="user-link">Панель администратора</a></div>
+    }
+    @if (this.authService.currentUserSignal()?.roles!.includes('Dentist'); ) {
+      <div><a routerLink="" class="user-link">Панель врача</a></div>
+    }
+    <div class="user-name">
+      {{ authService.currentUserSignal()?.user!.name }} {{ authService.currentUserSignal()?.user!.surname }}
+    </div>
+  }
+</div>
