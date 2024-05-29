@@ -5,11 +5,12 @@ import {FooterComponent} from "./core/layout/footer/footer.component";
 import {AuthService} from "./core/auth/services/auth.service";
 import {JwtService} from "./core/auth/services/jwt.service";
 import {AuthResponse} from "./core/auth/models/AuthResponse";
+import {HeaderComponent} from "./core/layout/header/header.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, FooterComponent,],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, FooterComponent, HeaderComponent,],
   providers: [AuthService, JwtService,],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
