@@ -62,4 +62,11 @@ export class AuthService {
     }
     return isTokenExpired;
   }
+
+  public isLogin(): boolean{
+    if(this.currentUserSignal() === null || this.currentUserSignal() === undefined) {
+      return false;
+    }
+    return true;
+  }
 }
