@@ -1,0 +1,30 @@
+.content{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.block{
+  border: 1px solid black;
+  margin: 1.5vh;
+  line-height: 1;
+  display: flex;
+  text-align: center;
+}
+
+.block-content{
+}
+
+.block:hover {
+  cursor: pointer;
+}
+
+.active {
+  visibility: hidden;
+  background-color: #007bff;
+  width: 5px;
+}
+
+.block:hover .active {
+  visibility: visible;
+}
