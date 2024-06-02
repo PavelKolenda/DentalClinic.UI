@@ -1,6 +1,6 @@
 import {Time} from "@angular/common";
 
-export interface AppointmentInfo {
+export interface AppointmentDetails {
   appointmentId: number;
   dentistName: string;
   dentistSurname: string;

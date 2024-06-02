@@ -8,7 +8,7 @@ import {PagedRequest} from "../../../shared/models/paged-request";
 import {Dentist} from "../models/dentist";
 import {AvailableAppointments} from "../models/available-appointments";
 import {AuthService} from "../../../core/auth/services/auth.service";
-import {AppointmentInfo} from "../models/appointment-info";
+import {AppointmentDetails} from "../models/appointment-details";
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -47,7 +47,6 @@ export class AppointmentService {
   public getDentists(specializationId: number): Observable<Dentist[]>{
     return this.http.get<Dentist[]>(`${environments.apiUrl}specializations/${specializationId}/dentists`)
       .pipe(map((response => {
-        console.log(response)
         return response;
       })));
   }
@@ -60,15 +59,27 @@ export class AppointmentService {
       })));
   }
 
-  public createAppointment(dentistId: number, appointmentId: number): Observable<AppointmentInfo>{
+  public createAppointment(dentistId: number, appointmentId: number): Observable<AppointmentDetails>{
     if(!this.authService.isLogin()){
       throw new Error();
     }
 
-    return this.http.post<AppointmentInfo>(`${environments.apiUrl}appointments/${dentistId}/${appointmentId}`,
+    return this.http.post<AppointmentDetails>(`${environments.apiUrl}appointments/${dentistId}/${appointmentId}`,
       {}, httpOptions)
       .pipe(map((response) => {
         return response;
     }));
+  }
+
+  public getAppointmentDetails(appointmentId: number){
+    if(!this.authService.isLogin()){
+      throw new Error();
+    }
+
+    return this.http.get<AppointmentDetails>(`${environments.apiUrl}appointments/${appointmentId}`)
+      .pipe(map((response =>{
+        console.log(`${environments.apiUrl}appointments/${appointmentId}`);
+        return response;
+      })));
   }
 }
