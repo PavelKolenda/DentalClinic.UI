@@ -1,0 +1,12 @@
+.wrapper{
+  margin-top: 2.5vh;
+  margin-bottom: 2.5vh;
+  margin-left: 2.5vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.content{
+  border: 1px solid black;
+  width: 50%;
+}

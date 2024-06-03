@@ -1,0 +1,36 @@
+<div class="wrapper">
+  <div class="content">
+     <div class="dentist-details">
+       <p>Врач
+         {{appointmentDetails?.dentistName}}
+         {{appointmentDetails?.dentistSurname}}
+         {{appointmentDetails?.dentistPatronymic}}
+       </p>
+       <p>Специальность:
+          {{appointmentDetails?.dentistSpecialization}}
+       </p>
+       <p>
+         Кабинет
+         {{appointmentDetails?.dentistCabinetNumber}}
+       </p>
+     </div>
+    <div class="appointment-details">
+      <p>
+        Дата приема
+        {{ appointmentDetails?.appointmentDate }}
+      </p>
+      <p>
+        Время приема
+        {{ appointmentDetails?.appointmentTime }}
+      </p>
+    </div>
+    <div class="patient-details">
+      <p>
+        Пациент
+        {{ appointmentDetails?.patientName }}
+        {{appointmentDetails?.patientSurname }}
+        {{appointmentDetails?.patientPatronymic}}
+      </p>
+    </div>
+  </div>
+</div>
