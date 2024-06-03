@@ -1,11 +1,11 @@
 import {Injectable, signal} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {map, Observable} from "rxjs";
+import {map, Observable, take} from "rxjs";
 import {AuthResponse} from "../models/AuthResponse";
 import {JwtService} from "./jwt.service";
 import {jwtDecode} from "jwt-decode";
+import {environments} from "../../../../environments/environments.development";
 
-const AUTH_API = 'https://localhost:7098/api/auth/';
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
@@ -18,11 +18,12 @@ export class AuthService {
   currentUserSignal = signal<AuthResponse | undefined | null>(undefined);
 
   constructor(private readonly http: HttpClient, private jwtService: JwtService) {
+    this.getInitialUserState();
   }
 
   public register(email?: string, password?: string, name?: string, surname?: string, patronymic?: string, birthDate?: string): Observable<AuthResponse> {
 
-    return this.http.post<AuthResponse>(AUTH_API + 'register', {
+    return this.http.post<AuthResponse>(`${environments.apiUrl}auth/register`, {
       email,
       password,
       name,
@@ -37,7 +38,7 @@ export class AuthService {
   }
 
   public login(email?: string, password?: string): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(AUTH_API + 'login', {email, password}, httpOptions)
+    return this.http.post<AuthResponse>( `${environments.apiUrl}auth/login`, {email, password}, httpOptions)
       .pipe(map((response => {
         console.log(response)
         this.jwtService.setToken(response.token);
@@ -50,23 +51,38 @@ export class AuthService {
     this.currentUserSignal.set(null);
   }
 
-  private isTokenExpired() {
-    const token = this.jwtService.getToken();
-    if (!token) {
-      return true;
+  private isTokenExpired(token: string) {
+    if(!token){
+      return false;
     }
+
     const decoded = jwtDecode(token);
-    const isTokenExpired = Date.now() > decoded['exp']! * 1000;
+    const isTokenExpired = Date.now() >= decoded['exp']! * 1000;
     if (isTokenExpired) {
       this.logout();
+      return false;
     }
     return isTokenExpired;
   }
 
   public isLogin(): boolean{
-    if(this.currentUserSignal() === null || this.currentUserSignal() === undefined) {
-      return false;
+    const token = this.jwtService.getToken();
+    if(!token) return false;
+    return !this.isTokenExpired(token);
+  }
+
+  private getInitialUserState(): void {
+    const token = this.jwtService.getToken();
+    if (token && !this.isTokenExpired(token)) {
+      this.http.get<AuthResponse>(`${environments.apiUrl}auth`)
+        .subscribe((response) => {
+          this.currentUserSignal.set(response);
+        }, (error) => {
+          console.error(error);
+          this.currentUserSignal.set(null);
+        });
+    } else {
+      this.currentUserSignal.set(null);
     }
-    return true;
   }
 }
