@@ -11,7 +11,7 @@
     </div>
   </div>
 
-  @if (authService.currentUserSignal() === null || authService.currentUserSignal() === undefined) {
+  @if (!this.authService.isLogin()) {
     <div>
       <button class="auth-button" routerLink="/login">Войти</button>
       <button class="auth-button" routerLink="/registration">Регистрация</button>
@@ -19,7 +19,7 @@
   }
 
 
-  @if (authService.currentUserSignal()) {
+  @if (this.authService.isLogin()) {
     @if (this.authService.currentUserSignal()?.roles!.includes('Admin')) {
       <div><a routerLink="" class="user-link">Панель администратора</a></div>
     }
