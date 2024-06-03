@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {environments} from "../../../../environments/environments.development";
 import {catchError, map, Observable} from "rxjs";
-import { PagedResponse } from "../../../shared/models/paged-response"
+import {PagedResponse} from "../../../shared/models/paged-response"
 import {Specialization} from "../models/specialization";
 import {PagedRequest} from "../../../shared/models/paged-request";
 import {Dentist} from "../models/dentist";
@@ -19,13 +19,9 @@ export class AppointmentService {
   constructor(private http: HttpClient, private authService: AuthService) {
   }
 
-
   public getSpecializations(): Observable<PagedResponse<Specialization>> {
     const pagedRequest: PagedRequest = {
-      page: 1,
-      pageSize: 100,
-      sortColumn: "",
-      sortOrder: 0
+      page: 1, pageSize: 100, sortColumn: "", sortOrder: 0
     };
 
     const params = new HttpParams()
@@ -34,51 +30,42 @@ export class AppointmentService {
       .set('sortColumn', pagedRequest.sortColumn)
       .set('sortOrder', pagedRequest.sortOrder.toString());
 
-    return this.http.get<PagedResponse<Specialization>>(environments.apiUrl + 'specializations',
-      { params })
+    return this.http.get<PagedResponse<Specialization>>(environments.apiUrl + 'specializations', {params})
       .pipe(map((response => {
         return response;
-      })),
-        catchError(err => {
-          return [];
-        }));
+      })), catchError(err => {
+        return [];
+      }));
   }
 
-  public getDentists(specializationId: number): Observable<Dentist[]>{
+  public getDentists(specializationId: number): Observable<Dentist[]> {
     return this.http.get<Dentist[]>(`${environments.apiUrl}specializations/${specializationId}/dentists`)
       .pipe(map((response => {
         return response;
       })));
   }
 
-  public getAvailableAppointments(dentistId: number): Observable<AvailableAppointments[]>{
-    return this.http.get<AvailableAppointments[]>
-    (`${environments.apiUrl}dentists/${dentistId}/available-appointments`)
+  public getAvailableAppointments(dentistId: number): Observable<AvailableAppointments[]> {
+    return this.http.get<AvailableAppointments[]>(`${environments.apiUrl}dentists/${dentistId}/available-appointments`)
       .pipe(map((response => {
         return response;
       })));
   }
 
-  public createAppointment(dentistId: number, appointmentId: number): Observable<AppointmentDetails>{
-    if(!this.authService.isLogin()){
+  public createAppointment(dentistId: number, appointmentId: number): Observable<AppointmentDetails> {
+    if (!this.authService.isLogin()) {
       throw new Error();
     }
 
-    return this.http.post<AppointmentDetails>(`${environments.apiUrl}appointments/${dentistId}/${appointmentId}`,
-      {}, httpOptions)
+    return this.http.post<AppointmentDetails>(`${environments.apiUrl}appointments/${dentistId}/${appointmentId}`, {}, httpOptions)
       .pipe(map((response) => {
         return response;
-    }));
+      }));
   }
 
-  public getAppointmentDetails(appointmentId: number){
-    if(!this.authService.isLogin()){
-      throw new Error();
-    }
-
+  public getAppointmentDetails(appointmentId: number) {
     return this.http.get<AppointmentDetails>(`${environments.apiUrl}appointments/${appointmentId}`)
-      .pipe(map((response =>{
-        console.log(`${environments.apiUrl}appointments/${appointmentId}`);
+      .pipe(map((response => {
         return response;
       })));
   }
