@@ -1,0 +1,23 @@
+<div class="wrapper">
+  <h4>Записи</h4>
+  <div class="content">
+      @for (appointment of appointmentsDetails?.items; track appointment){
+        <div class="appointment-info" (click)="selectAppointment(appointment.appointmentId)">
+          <div class="dentist">
+            <h5>{{appointment.dentistName}} {{appointment.dentistSurname}} {{appointment.dentistPatronymic}}</h5>
+          </div>
+          <div class="specialization">
+            <h5>{{appointment.dentistSpecialization}}</h5>
+          </div>
+          <div class="dateTime">
+            <h5>{{appointment.appointmentDate}} {{appointment.appointmentTime}}</h5>
+          </div>
+        </div>
+      }
+  </div>
+
+  <div class="pagination">
+    <button (click)="previousPage()" [disabled]="!appointmentsDetails?.hasPreviousPage">Previous</button>
+    <button (click)="nextPage()" [disabled]="!appointmentsDetails?.hasNextPage">Next</button>
+  </div>
+</div>
