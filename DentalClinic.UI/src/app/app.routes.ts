@@ -12,6 +12,7 @@ import {
   AppointmentDetailsComponent
 } from "./features/appointments/pages/appointment-details/appointment-details.component";
 import {isLoggedGuard} from "./is-logged.guard";
+import {AppointmentsListComponent} from "./features/appointments/pages/appointments-list/appointments-list.component";
 
 export const routes: Routes = [
   { path: 'registration', component: RegistrationComponent },
@@ -20,6 +21,11 @@ export const routes: Routes = [
   {
     path: 'appointment/details/:appointmentId',
     component: AppointmentDetailsComponent,
+    canActivate: [isLoggedGuard]
+  },
+  {
+    path: 'appointments',
+    component: AppointmentsListComponent,
     canActivate: [isLoggedGuard]
   },
   { path: 'appointment/:specializationId', component: SelectDentistComponent },
