@@ -1,0 +1,26 @@
+<div>
+  <div>
+    <h4>Заказ талона</h4>
+    <span>Выбор даты и время</span>
+  </div>
+  <div class="calendar">
+    @for (day of calendarDays; track day) {
+      <div class="calendar-cell" (click)="showAppointments(day)">
+        <div class="date">
+          {{ day.date | date: 'MM-dd' }}
+        </div>
+        <div class="appointment-count">{{ day.count }}</div>
+      </div>
+    }
+  </div>
+  @if (selectedDay) {
+    <h4>Доступное время</h4>
+    <div class="available-time">
+      @for (appointment of selectedDay.availableAppointments; track appointment) {
+        <div (click)="selectAppointment(appointment.appointmentId)" class="block">
+          {{ appointment.availableTime }}
+        </div>
+      }
+    </div>
+  }
+</div>

@@ -1,0 +1,13 @@
+<div>
+  <h2>Заказ талона</h2>
+  <span>Выбор специальности</span>
+
+  @for (specialization of specializations; track specialization){
+    <div class="content">
+      <div class="block" (click)="selectSpecialization(specialization.id)">
+        <div class="active"></div>
+        <h5>{{ specialization.name }}</h5>
+      </div>
+    </div>
+  }
+</div>
