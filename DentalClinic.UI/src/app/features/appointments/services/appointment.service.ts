@@ -69,4 +69,19 @@ export class AppointmentService {
         return response;
       })));
   }
+
+  public getAppointments(pagedRequest: PagedRequest): Observable<PagedResponse<AppointmentDetails>> {
+    if(pagedRequest.page < 1) {
+      pagedRequest.page = 1;
+    }
+    const params = new HttpParams()
+      .set('page', pagedRequest.page)
+      .set('pageSize', pagedRequest.pageSize);
+
+    return this.http.get<PagedResponse<AppointmentDetails>>(environments.apiUrl + 'patients/appointments',
+      {params})
+      .pipe(map((response => {
+        return response;
+      })));
+  }
 }
