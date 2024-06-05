@@ -1,0 +1,22 @@
+<div class="wrapper">
+  <h4 class="title">Записи</h4>
+  <input class="date-input" [(ngModel)]="selectedDate" (ngModelChange)="loadAppointments()" type="date">
+
+  <div class="content">
+    @for (appointment of appointmentsDetails?.items; track appointment){
+      <div class="appointment-info">
+        <div class="dateTime">
+          <h5>{{appointment.appointmentTime | dateToHHmm}}</h5>
+        </div>
+        <div class="patient">
+          <h5>{{appointment.patientName}} {{appointment.patientSurname}} {{appointment.patientPatronymic}}</h5>
+        </div>
+      </div>
+    }
+  </div>
+
+  <div class="pagination">
+    <button class="page-button" (click)="previousPage()" [disabled]="!appointmentsDetails?.hasPreviousPage">Назад</button>
+    <button class="page-button" (click)="nextPage()" [disabled]="!appointmentsDetails?.hasNextPage">Вперед</button>
+  </div>
+</div>
