@@ -1,9 +1,9 @@
-import {Injectable, signal} from '@angular/core';
+import {computed, Injectable, signal} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {map, Observable, take} from "rxjs";
+import {catchError, EMPTY, map, Observable, take, tap} from "rxjs";
 import {AuthResponse} from "../models/AuthResponse";
 import {JwtService} from "./jwt.service";
-import {jwtDecode} from "jwt-decode";
+import {jwtDecode, JwtPayload} from "jwt-decode";
 import {environments} from "../../../../environments/environments.development";
 
 const httpOptions = {
@@ -19,6 +19,16 @@ export class AuthService {
 
   constructor(private readonly http: HttpClient, private jwtService: JwtService) {
     this.getInitialUserState();
+  }
+
+  public isDentist(): boolean {
+    const token = this.jwtService.getToken();
+    if (!token) return false;
+
+    const decoded = jwtDecode<RoleJwtPayload>(token);
+    const roles: string[] = decoded.role || [];
+
+    return roles.includes('Dentist');
   }
 
   public register(email?: string, password?: string, name?: string, surname?: string, patronymic?: string, birthDate?: string): Observable<AuthResponse> {
@@ -51,7 +61,7 @@ export class AuthService {
     this.currentUserSignal.set(null);
   }
 
-  private isTokenExpired(token: string) {
+  isTokenExpired(token: string) {
     if(!token){
       return false;
     }
@@ -71,18 +81,30 @@ export class AuthService {
     return !this.isTokenExpired(token);
   }
 
+  //Send request to api. But don't set user signal.
   private getInitialUserState(): void {
     const token = this.jwtService.getToken();
     if (token && !this.isTokenExpired(token)) {
-      this.http.get<AuthResponse>(`${environments.apiUrl}auth`)
-        .subscribe((response) => {
+      this.http.get<AuthResponse>(`${environments.apiUrl}auth`).pipe(
+        tap((response) => {
+          console.log(response);
           this.currentUserSignal.set(response);
-        }, (error) => {
+        }),
+        catchError((error) => {
           console.error(error);
           this.currentUserSignal.set(null);
-        });
+          return EMPTY;
+        })
+      ).subscribe(() => {
+        console.log(this.currentUserSignal());
+      });
     } else {
       this.currentUserSignal.set(null);
     }
+    console.log(this.currentUserSignal());
   }
+}
+
+interface RoleJwtPayload extends JwtPayload {
+  role: string[];
 }
