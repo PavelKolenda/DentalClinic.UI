@@ -10,6 +10,6 @@ export interface AppointmentDetails {
   patientName: string;
   patientSurname: string;
   patientPatronymic?: string;
-  appointmentTime: Time;
+  appointmentTime: string;
   appointmentDate: Date;
 }
