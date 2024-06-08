@@ -1,0 +1,46 @@
+<div class="wrapper">
+  <h4 class="title">Врачи</h4>
+  <button class="create-button">Добавить</button>
+
+  <table class="dentists-table">
+    <thead>
+    <tr>
+      <th (click)="sort('name')">Имя</th>
+      <th (click)="sort('surname')">Фамилия</th>
+      <th (click)="sort('patronymic')">Отчество</th>
+      <th (click)="sort('cabinetNumber')">Номер кабинета</th>
+      <th>Специализация</th>
+      <th>Действия</th>
+    </tr>
+    </thead>
+    <tbody>
+    @for(dentist of items?.items; track dentist){
+      <tr>
+        <td>{{dentist.name}}</td>
+        <td>{{dentist.surname}}</td>
+        <td>{{dentist.patronymic}}</td>
+        <td>{{dentist.cabinetNumber}}</td>
+        <td>{{dentist.specialization}}</td>
+        <td>
+          <button class="update-button">Обновить</button>
+          <button class="delete-button" (click)="deleteDentist(dentist.id)">Удалить</button>
+        </td>
+      </tr>
+    }
+    </tbody>
+  </table>
+
+  <div class="pagination">
+    <div>
+      <label for="pageSize">Количество: </label>
+      <select id="pageSize" [(ngModel)]="pagedRequest.pageSize" (change)="getItems()">
+        <option value="10">10</option>
+        <option value="20">20</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+      </select>
+    </div>
+    <button class="page-button" (click)="previousPage()" [disabled]="!items?.hasPreviousPage">Назад</button>
+    <button class="page-button" (click)="nextPage()" [disabled]="!items?.hasNextPage">Вперед</button>
+  </div>
+</div>
