@@ -21,4 +21,11 @@ export class AdminDentistWorkingScheduleService {
   public deleteDentistWorkingSchedule(dentistId: number, scheduleId: number): Observable<void> {
     return this.http.delete<void>(`${environments.apiUrl}dentists/${dentistId}/schedule/${scheduleId}`);
   }
+
+  public addWorkingScheduleToDentist(dentistId: number, scheduleId: number){
+    return this.http.post<void>(`${environments.apiUrl}dentists/${dentistId}/schedule/${scheduleId}`, {})
+      .pipe(map((response => {
+        return response;
+      })));
+  }
 }
