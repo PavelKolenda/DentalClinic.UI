@@ -11,7 +11,7 @@ import {DentistCreateModel} from "../models/dentist/dentist-create.model";
 @Injectable({
   providedIn: 'root'
 })
-export class AdminService {
+export class AdminDentistsService {
   constructor(private authService: AuthService, private http: HttpClient) { }
 
   public getDentist(pagedRequest: PagedRequest): Observable<PagedResponse<Dentist>> {
