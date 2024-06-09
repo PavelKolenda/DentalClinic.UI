@@ -5,6 +5,7 @@ import {AuthResponse} from "../models/AuthResponse";
 import {JwtService} from "./jwt.service";
 import {jwtDecode, JwtPayload} from "jwt-decode";
 import {environments} from "../../../../environments/environments.development";
+import {toSignal} from "@angular/core/rxjs-interop";
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -81,27 +82,21 @@ export class AuthService {
     return !this.isTokenExpired(token);
   }
 
-  //Send request to api. But don't set user signal.
   private getInitialUserState(): void {
     const token = this.jwtService.getToken();
     if (token && !this.isTokenExpired(token)) {
       this.http.get<AuthResponse>(`${environments.apiUrl}auth`).pipe(
         tap((response) => {
-          console.log(response);
           this.currentUserSignal.set(response);
+          console.log(this.currentUserSignal())
         }),
         catchError((error) => {
           console.error(error);
           this.currentUserSignal.set(null);
           return EMPTY;
         })
-      ).subscribe(() => {
-        console.log(this.currentUserSignal());
-      });
-    } else {
-      this.currentUserSignal.set(null);
+      ).subscribe();
     }
-    console.log(this.currentUserSignal());
   }
 }
 
