@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {AdminService} from "../../services/admin.service";
+import {AdminDentistsService} from "../../../services/admin-dentists.service";
 import {Router} from "@angular/router";
-import {PagedRequest} from "../../../../shared/models/paged-request";
-import {PagedResponse} from "../../../../shared/models/paged-response";
-import {Dentist} from "../../../appointments/models/dentist";
+import {PagedRequest} from "../../../../../shared/models/paged-request";
+import {PagedResponse} from "../../../../../shared/models/paged-response";
+import {Dentist} from "../../../../appointments/models/dentist";
 import {FormsModule} from "@angular/forms";
-import {SortService} from "../../../../shared/services/sort.service";
-import { ListComponent } from '../../../../shared/components/list.component';
+import {SortService} from "../../../../../shared/services/sort.service";
+import { ListComponent } from '../../../../../shared/components/list.component';
 
 @Component({
   selector: 'app-dentists-list',
@@ -19,7 +19,7 @@ import { ListComponent } from '../../../../shared/components/list.component';
 })
 export class DentistsListComponent extends ListComponent<Dentist>  {
 
-  constructor(private adminService: AdminService, private router: Router, sortService: SortService) {
+  constructor(private adminService: AdminDentistsService, private router: Router, sortService: SortService) {
     super(sortService);
   }
 
