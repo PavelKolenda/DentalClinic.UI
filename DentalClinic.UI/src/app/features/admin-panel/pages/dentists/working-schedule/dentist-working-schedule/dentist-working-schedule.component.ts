@@ -16,7 +16,10 @@ import {PagedRequest} from "../../../../../../shared/models/paged-request";
     FormsModule
   ],
   templateUrl: './dentist-working-schedule.component.html',
-  styleUrl: './dentist-working-schedule.component.css'
+  styleUrls: [
+    './dentist-working-schedule.component.css',
+    '../../../../../../shared/components/list-component/list.component.css',
+    ]
 })
 export class DentistWorkingScheduleComponent implements OnInit{
 
