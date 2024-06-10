@@ -1,10 +1,10 @@
 import {Component, OnInit} from "@angular/core";
-import {PagedRequest} from "../models/paged-request";
-import {PagedResponse} from "../models/paged-response";
-import {SortService} from "../services/sort.service";
+import {PagedRequest} from "../../models/paged-request";
+import {PagedResponse} from "../../models/paged-response";
+import {SortService} from "../../services/sort.service";
 
 @Component({
-  template: '' // Add this line
+  template: ''
 })
 export abstract class ListComponent<T> implements OnInit {
   pagedRequest: PagedRequest = {
