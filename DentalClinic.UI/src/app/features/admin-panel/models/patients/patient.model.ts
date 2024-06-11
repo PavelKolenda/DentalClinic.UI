@@ -5,4 +5,6 @@ export interface PatientModel {
   patronymic: string;
   email: string;
   birthDate: Date;
+  phoneNumber: string;
+  address: string;
 }
