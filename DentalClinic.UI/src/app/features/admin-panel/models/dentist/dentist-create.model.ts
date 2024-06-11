@@ -4,4 +4,7 @@ export interface DentistCreateModel{
   patronymic: string;
   cabinetNumber: number;
   specialization: string;
+  email: string;
+  password: string;
+  birthDate: string;
 }
