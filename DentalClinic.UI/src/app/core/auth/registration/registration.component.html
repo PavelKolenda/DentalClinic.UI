@@ -51,6 +51,24 @@
         <small style="color: red;">Поля обязательно для заполнения</small>
       }
     </div>
+    <div>
+      <label for="phoneNumber"><span class="red-color">*</span>Номер телефона:</label>
+      <div>
+        <input type='text' id="phoneNumber" formControlName="phoneNumber" prefix="+375" mask="(00)000-00-00">
+      </div>
+      @if(!userRegistrationForm.controls.phoneNumber.valid && userRegistrationForm.controls.phoneNumber.touched){
+        <small style="color: red;">Поля обязательно для заполнения</small>
+      }
+    </div>
+    <div>
+      <label for="address"><span class="red-color">*</span>Адрес:</label>
+      <div>
+        <input type="text" id="address" formControlName="address">
+      </div>
+      @if(!userRegistrationForm.controls.address.valid && userRegistrationForm.controls.address.touched){
+        <small style="color: red;">Поля обязательно для заполнения</small>
+      }
+    </div>
     <small class="have-account-link"><a routerLink="">Уже есть аккаунт?</a></small>
     <button type="submit" class="registration-button" (click)="submitForm()">Регистрация</button>
   </form>

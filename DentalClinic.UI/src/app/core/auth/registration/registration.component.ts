@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {Router, RouterLink} from "@angular/router";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {AuthService} from "../services/auth.service";
+import {NgxMaskDirective} from "ngx-mask";
 
 @Component({
   selector: 'app-registration',
@@ -9,7 +10,8 @@ import {AuthService} from "../services/auth.service";
   styleUrls: ['./registration.component.css'],
   imports: [
     RouterLink,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxMaskDirective,
   ],
   standalone: true,
 })
@@ -25,7 +27,9 @@ export class RegistrationComponent {
     name: new FormControl('', [Validators.required, Validators.minLength(2)]),
     surname: new FormControl('', [Validators.required, Validators.minLength(2)]),
     patronymic: new FormControl(''),
-    birthDate: new FormControl('', [Validators.required])
+    birthDate: new FormControl('', [Validators.required]),
+    address: new FormControl('', [Validators.required]),
+    phoneNumber: new FormControl('',[Validators.required])
   });
 
   submitForm() {
@@ -34,13 +38,16 @@ export class RegistrationComponent {
     }
 
     const formValues = this.userRegistrationForm.getRawValue();
-
+    formValues.phoneNumber = "+375" + formValues.phoneNumber!.replace(/\D/g, '');
     const credentials = Object.fromEntries(
       Object.entries(formValues).map(([key, value]) => [key, value ?? undefined])
     );
-    const {email, password, name, surname, patronymic, birthDate} = credentials;
 
-    this.authService.register(email, password, name, surname, patronymic, birthDate)
+    console.log(credentials);
+
+    const {email, password, name, surname, patronymic, birthDate, address, phoneNumber} = credentials;
+    console.log(phoneNumber);
+    this.authService.register(email, password, name, surname, patronymic, birthDate, address, phoneNumber)
       .subscribe((response) => {
         this.authService.currentUserSignal.set(response);
         this.router.navigateByUrl('/');
