@@ -32,7 +32,7 @@ export class AuthService {
     return roles.includes('Dentist');
   }
 
-  public register(email?: string, password?: string, name?: string, surname?: string, patronymic?: string, birthDate?: string): Observable<AuthResponse> {
+  public register(email?: string, password?: string, name?: string, surname?: string, patronymic?: string, birthDate?: string, phoneNumber?: string, address?: string): Observable<AuthResponse> {
 
     return this.http.post<AuthResponse>(`${environments.apiUrl}auth/register`, {
       email,
@@ -40,7 +40,9 @@ export class AuthService {
       name,
       surname,
       patronymic,
-      birthDate
+      birthDate,
+      phoneNumber,
+      address
     }, httpOptions)
       .pipe(map(response => {
         this.jwtService.setToken(response.token);
