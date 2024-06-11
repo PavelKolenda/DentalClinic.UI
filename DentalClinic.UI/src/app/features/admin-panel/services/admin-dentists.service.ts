@@ -30,7 +30,7 @@ export class AdminDentistsService {
   }
 
   public createDentist(dentist: DentistCreateModel): Observable<Dentist> {
-    return this.http.post<Dentist>(environments.apiUrl + 'dentists', { dentist })
+    return this.http.post<Dentist>(environments.apiUrl + 'dentists',  dentist)
       .pipe(map((response => {
         console.log(response)
         return response;
