@@ -5,18 +5,16 @@ import {AppointmentService} from "../../../../appointments/services/appointment.
 import {DentistCreateModel} from "../../../models/dentist/dentist-create.model";
 import {Specialization} from "../../../../appointments/models/specialization";
 import {HttpErrorResponse} from "@angular/common/http";
+import {CreateDentistErrorMessages} from "./create-dentist-error-messages";
 
 @Component({
   selector: 'app-create-dentist',
   standalone: true,
-  imports: [
-    ReactiveFormsModule,
-    FormsModule
-  ],
+  imports: [ReactiveFormsModule, FormsModule],
   templateUrl: './create-dentist.component.html',
   styleUrl: './create-dentist.component.css'
 })
-export class CreateDentistComponent implements OnInit{
+export class CreateDentistComponent implements OnInit {
 
   specializations: Specialization[] | null = null;
 
@@ -27,18 +25,23 @@ export class CreateDentistComponent implements OnInit{
     surname: new FormControl('', [Validators.required, Validators.minLength(2)]),
     patronymic: new FormControl(''),
     birthDate: new FormControl('', [Validators.required]),
-    cabinetNumber: new FormControl('', [
-      Validators.required,
-      Validators.min(1),
-      Validators.max(25)
-    ]),
+    cabinetNumber: new FormControl('', [Validators.required, Validators.min(1), Validators.max(26)]),
     specialization: new FormControl('')
   });
 
-  constructor(private dentistService: AdminDentistsService, private appointmentsService: AppointmentService) { }
+  public errorMessages: { [key: string]: string } = {};
+  private userFriendlyMessages: CreateDentistErrorMessages = {
+    BirthDate: 'Врач должен быть старше 18 лет и младше 60.',
+    CabinetNumber: 'Номер кабинета от 1 до 26',
+    EmailExists: 'Aдрес электронной почты уже существует.'
+  };
+
+  constructor(private dentistService: AdminDentistsService, private appointmentsService: AppointmentService) {
+  }
 
   ngOnInit(): void {
-    this.appointmentsService.getSpecializations().subscribe((response) => {
+    this.appointmentsService.getSpecializations().subscribe(
+      (response) => {
       this.specializations = response.items;
     });
   }
@@ -66,10 +69,20 @@ export class CreateDentistComponent implements OnInit{
     this.dentistService.createDentist(dentist).subscribe({
       next: (response) => {
         this.clearForm();
-      },
-      error: (error: HttpErrorResponse) => {
-        if (error.status === 400 && error.error && error.error.errors) {
-          console.log(error.error.errors);
+      }, error: (error: HttpErrorResponse) => {
+        this.errorMessages = {};
+        if (error.status === 400 && error.error) {
+          if (error.error.detail && error.error.detail.includes('already exists')) {
+            this.errorMessages['EmailExists'] = this.userFriendlyMessages['EmailExists'];
+          }
+
+          if (error.error.errors) {
+            for (const key in error.error.errors) {
+              if (this.userFriendlyMessages[key]) {
+                this.errorMessages[key] = this.userFriendlyMessages[key];
+              }
+            }
+          }
         }
       }
     });

@@ -41,6 +41,12 @@
       <div>
         <label for="cabinetNumber">Номер кабинета: </label>
         <input type="number" id="cabinetNumber" formControlName="cabinetNumber" min="1" max="26">
+        @if(!dentistCreateForm.controls.cabinetNumber.valid && dentistCreateForm.controls.cabinetNumber.touched){
+          <small style="color: red;">Номер кабинета от 1 до 26</small>
+        }
+        @if (errorMessages['CabinetNumber']) {
+          <small class="red-color">{{ errorMessages['CabinetNumber'] }}</small>
+        }
       </div>
     </div>
 
@@ -52,6 +58,9 @@
         </div>
         @if(!dentistCreateForm.controls.email.valid && dentistCreateForm.controls.email.touched){
           <small style="color: red;">Поля обязательно для заполнения</small>
+        }
+        @if (errorMessages['EmailExists']) {
+          <small class="red-color">{{ errorMessages['EmailExists'] }}</small>
         }
       </div>
       <div>
@@ -71,6 +80,9 @@
       </div>
       @if(!dentistCreateForm.controls.birthDate.valid && dentistCreateForm.controls.birthDate.touched){
         <small style="color: red;">Поля обязательно для заполнения</small>
+      }
+      @if(errorMessages['BirthDate']){
+        <small class="red-color">{{ errorMessages['BirthDate'] }}</small>
       }
     </div>
     <button type="submit" class="registration-button" (click)="submit()">Добавить</button>
