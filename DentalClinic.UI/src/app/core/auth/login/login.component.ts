@@ -2,6 +2,8 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {Router, RouterLink} from "@angular/router";
 import {AuthService} from "../services/auth.service";
+import {HttpErrorResponse} from "@angular/common/http";
+import {LoginUserFriendlyErrorMessages} from "../errors/LoginUserFriendlyErrorMessages";
 
 @Component({
   selector: 'app-login',
@@ -18,6 +20,10 @@ export class LoginComponent {
   constructor(private authService: AuthService, private router: Router) {
   }
 
+  public errorMessages: { [key: string]: string } = {};
+  private userFriendlyMessages: LoginUserFriendlyErrorMessages = {
+    CredentialsDontExists: "Проверьте правильность введенных значений."
+  }
 
   public userLoginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -35,9 +41,19 @@ export class LoginComponent {
     );
     const { email, password } = credentials;
 
-    this.authService.login(email, password).subscribe((response)=> {
-      this.authService.currentUserSignal.set(response);
-      this.router.navigateByUrl('/')
+    this.authService.login(email, password).subscribe({
+      next: (response) => {
+        this.authService.currentUserSignal.set(response);
+        this.router.navigateByUrl('/');
+      },
+      error: (error: HttpErrorResponse) => {
+        this.errorMessages = {};
+        if (error.status === 400 && error.error) {
+          if (error.error.detail && error.error.detail.includes("provided credentials don't exists")) {
+            this.errorMessages['CredentialsDontExists'] = this.userFriendlyMessages['CredentialsDontExists'];
+          }
+        }
+      }
     });
   }
 }

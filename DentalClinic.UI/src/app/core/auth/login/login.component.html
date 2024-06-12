@@ -18,6 +18,9 @@
       @if (!userLoginForm.controls.password.valid && userLoginForm.controls.password.touched) {
         <small style="color: red;">Поля обязательно для заполнения</small>
       }
+      @if (errorMessages['CredentialsDontExists']) {
+        <small class="red-color">{{ errorMessages['CredentialsDontExists'] }}</small>
+      }
     </div>
     <small class="have-account-link"><a routerLink="/registration">Нет аккаунта?</a></small>
     <button type="submit" class="registration-button" (click)="login()">Войти</button>
