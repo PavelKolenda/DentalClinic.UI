@@ -1,75 +1,96 @@
 <div class="registration-form-container">
-  <form class="registration-form" [formGroup]="userRegistrationForm">
+  <form [formGroup]="userRegistrationForm" class="registration-form">
     <div>
       <label for="email"><span class="red-color">*</span>Электронная почта:</label>
       <div>
-        <input type="text" id="email" formControlName="email">
+        <input formControlName="email" id="email" type="text">
       </div>
-      @if(!userRegistrationForm.controls.email.valid && userRegistrationForm.controls.email.touched){
+      @if (!userRegistrationForm.controls.email.valid && userRegistrationForm.controls.email.touched) {
         <small style="color: red;">Поля обязательно для заполнения</small>
+      }
+      @if (errorMessages['Email']) {
+        <small class="red-color">{{ errorMessages['Email'] }}</small>
       }
     </div>
     <div>
       <label for="password"><span class="red-color">*</span>Пароль:</label>
       <div>
-        <input type="password" id="password" formControlName="password">
+        <input formControlName="password" id="password" type="password">
       </div>
-      @if(!userRegistrationForm.controls.password.valid && userRegistrationForm.controls.password.touched){
+      @if (!userRegistrationForm.controls.password.valid && userRegistrationForm.controls.password.touched) {
         <small style="color: red;">Поля обязательно для заполнения</small>
+      }
+      @if (errorMessages['Password']) {
+        <small class="red-color">{{ errorMessages['Password'] }}</small>
       }
     </div>
     <div>
       <label for="name"><span class="red-color">*</span>Имя:</label>
       <div>
-        <input type="text" id="name" formControlName="name">
+        <input formControlName="name" id="name" type="text">
       </div>
-      @if(!userRegistrationForm.controls.name.valid && userRegistrationForm.controls.name.touched){
+      @if (!userRegistrationForm.controls.name.valid && userRegistrationForm.controls.name.touched) {
         <small style="color: red;">Поля обязательно для заполнения</small>
+      }
+      @if (errorMessages['Name']) {
+        <small class="red-color">{{ errorMessages['Name'] }}</small>
       }
     </div>
     <div>
       <label for="surname"><span class="red-color">*</span>Фамилия:</label>
       <div>
-        <input type="text" id="surname" formControlName="surname">
+        <input formControlName="surname" id="surname" type="text">
       </div>
-      @if(!userRegistrationForm.controls.surname.valid && userRegistrationForm.controls.surname.touched){
+      @if (!userRegistrationForm.controls.surname.valid && userRegistrationForm.controls.surname.touched) {
         <small style="color: red;">Поля обязательно для заполнения</small>
+      }
+      @if (errorMessages['Surname']) {
+        <small class="red-color">{{ errorMessages['Surname'] }} </small>
       }
     </div>
     <div>
       <label for="patronymic">Отчество:</label>
       <div>
-        <input type="text" id="patronymic" formControlName="patronymic">
+        <input formControlName="patronymic" id="patronymic" type="text">
       </div>
     </div>
     <div>
       <label for="birthDate"><span class="red-color">*</span>Дата рождения:</label>
       <div>
-        <input type="date" id="birthDate" formControlName="birthDate" [max]="today">
+        <input [max]="today" formControlName="birthDate" id="birthDate" type="date">
       </div>
-      @if(!userRegistrationForm.controls.birthDate.valid && userRegistrationForm.controls.birthDate.touched){
+      @if (!userRegistrationForm.controls.birthDate.valid && userRegistrationForm.controls.birthDate.touched) {
         <small style="color: red;">Поля обязательно для заполнения</small>
+      }
+      @if (errorMessages['BirthDate']) {
+        <small class="red-color">{{ errorMessages['BirthDate'] }}</small>
       }
     </div>
     <div>
       <label for="phoneNumber"><span class="red-color">*</span>Номер телефона:</label>
       <div>
-        <input type='text' id="phoneNumber" formControlName="phoneNumber" prefix="+375" mask="(00)000-00-00">
+        <input formControlName="phoneNumber" id="phoneNumber" mask="(00)000-00-00" prefix="+375" type='text'>
       </div>
-      @if(!userRegistrationForm.controls.phoneNumber.valid && userRegistrationForm.controls.phoneNumber.touched){
+      @if (!userRegistrationForm.controls.phoneNumber.valid && userRegistrationForm.controls.phoneNumber.touched) {
         <small style="color: red;">Поля обязательно для заполнения</small>
+      }
+      @if (errorMessages['PhoneNumber']) {
+        <small class="red-color">{{ errorMessages['PhoneNumber'] }}</small>
       }
     </div>
     <div>
       <label for="address"><span class="red-color">*</span>Адрес:</label>
       <div>
-        <input type="text" id="address" formControlName="address">
+        <input formControlName="address" id="address" type="text">
       </div>
-      @if(!userRegistrationForm.controls.address.valid && userRegistrationForm.controls.address.touched){
+      @if (!userRegistrationForm.controls.address.valid && userRegistrationForm.controls.address.touched) {
         <small style="color: red;">Поля обязательно для заполнения</small>
+      }
+      @if (errorMessages['Address']) {
+        <small class="red-color">{{ errorMessages['Address'] }}</small>
       }
     </div>
     <small class="have-account-link"><a routerLink="">Уже есть аккаунт?</a></small>
-    <button type="submit" class="registration-button" (click)="submitForm()">Регистрация</button>
+    <button (click)="submitForm()" class="registration-button" type="submit">Регистрация</button>
   </form>
 </div>
