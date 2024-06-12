@@ -29,19 +29,19 @@
   background-color: #0056b3;
 }
 
-.dentists-table {
+.model-table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
 }
 
-.dentists-table th, .dentists-table td {
+.model-table th, .model-table td {
   border: 1px solid #ddd;
   padding: 8px;
   text-align: left;
 }
 
-.dentists-table th {
+.model-table th {
   background-color: #f2f2f2;
 }
 
