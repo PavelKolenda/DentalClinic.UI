@@ -1,0 +1,10 @@
+<div class="container mt-5">
+  <h2 class="mb-3">Добавление специализации</h2>
+  <form [formGroup]="specializationForm" (ngSubmit)="create()">
+    <div class="form-group">
+      <label for="name">Название</label>
+      <input type="text" id="name" class="form-control" formControlName="name">
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!specializationForm.valid">Добавить</button>
+  </form>
+</div>

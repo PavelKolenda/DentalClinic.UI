@@ -45,4 +45,8 @@ export class SpecializationsListComponent extends ListComponent<Specialization> 
   public update(id:number){
     this.router.navigateByUrl(`/admin/specializations/${id}/update`);
   }
+
+  public create(){
+    this.router.navigateByUrl(`/admin/specializations/create`);
+  }
 }
