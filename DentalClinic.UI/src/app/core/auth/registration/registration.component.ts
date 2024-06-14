@@ -55,7 +55,7 @@ export class RegistrationComponent {
 
     const {email, password, name, surname, patronymic, birthDate, address, phoneNumber} = credentials;
 
-    this.authService.register(email, password, name, surname, patronymic, birthDate, address, phoneNumber)
+    this.authService.register(email, password, name, surname, patronymic, birthDate, phoneNumber, address)
       .subscribe({
         next: (response) => {
           this.authService.currentUserSignal.set(response);
