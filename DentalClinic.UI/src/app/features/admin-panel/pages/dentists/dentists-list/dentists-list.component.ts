@@ -20,7 +20,7 @@ import { ListComponent } from '../../../../../shared/components/list-component/l
 })
 export class DentistsListComponent extends ListComponent<Dentist>  {
 
-  constructor(private adminService: AdminDentistsService, private router: Router, sortService: SortService) {
+  constructor(private adminService: AdminDentistsService, protected router: Router, sortService: SortService) {
     super(sortService);
   }
 

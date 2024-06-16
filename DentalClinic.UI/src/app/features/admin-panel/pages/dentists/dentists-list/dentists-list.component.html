@@ -24,6 +24,7 @@
         <td>
           <button class="update-button">Обновить</button>
           <button class="delete-button" (click)="deleteDentist(dentist.id)">Удалить</button>
+          <button (click)="router.navigateByUrl('/admin/dentist/'+dentist.id+'/working-schedule')">Расписание</button>
         </td>
       </tr>
     }
