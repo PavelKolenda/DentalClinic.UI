@@ -7,7 +7,6 @@ import {HttpClient, HttpParams} from "@angular/common/http";
 import {PagedRequest} from "../../../shared/models/paged-request";
 import {environments} from "../../../../environments/environments.development";
 import {DentistCreateModel} from "../models/dentist/dentist-create.model";
-import {DentistUpdateModel} from "../models/dentist/dentist-update.model";
 
 @Injectable({
   providedIn: 'root'
@@ -42,7 +41,7 @@ export class AdminDentistsService {
     return this.http.delete<void>(`${environments.apiUrl}dentists/${id}`);
   }
 
-  public updateDentist(id: number, dentist: DentistUpdateModel): Observable<void> {
+  public updateDentist(id: number, dentist: Dentist): Observable<void> {
     return this.http.put<void>(`${environments.apiUrl}dentists/${id}`, dentist);
   }
 }

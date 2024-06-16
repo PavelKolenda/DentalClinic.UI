@@ -8,7 +8,6 @@ import {environments} from "../../../../environments/environments.development";
 import {Specialization} from "../../appointments/models/specialization";
 import {DentistCreateModel} from "../models/dentist/dentist-create.model";
 import {SpecializationCreateModel} from "../models/specializations/specialization-create.model";
-import {DentistUpdateModel} from "../models/dentist/dentist-update.model";
 import {SpecializationUpdateModel} from "../models/specializations/specialization-update.model";
 
 @Injectable({
