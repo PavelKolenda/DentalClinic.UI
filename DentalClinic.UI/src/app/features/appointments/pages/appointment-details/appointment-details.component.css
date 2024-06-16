@@ -8,5 +8,18 @@
 
 .content{
   border: 1px solid black;
-  width: 50%;
+  border-radius: 12px;
+  width: 90%;
+}
+
+.download-button{
+  width: 100px;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  align-self: center;
+  margin-left: 2.5vh;
 }
