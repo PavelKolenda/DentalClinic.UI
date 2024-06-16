@@ -47,4 +47,11 @@ export class AdminWorkingScheduleService {
   public delete(id: number): Observable<void> {
     return this.http.delete<void>(`${environments.apiUrl}workingschedules/${id}`);
   }
+
+  public getById(id: number): Observable<WorkingScheduleModel> {
+    return this.http.get<WorkingScheduleModel>(`${environments.apiUrl}workingschedules/${id}`)
+      .pipe(map((response => {
+        return response
+      })));
+  }
 }
