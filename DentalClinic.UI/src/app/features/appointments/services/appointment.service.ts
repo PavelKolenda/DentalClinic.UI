@@ -84,4 +84,10 @@ export class AppointmentService {
         return response;
       })));
   }
+
+
+  public downloadAppointmentInfoPdf(appointmentId: number){
+    return this.http.get(`${environments.apiUrl}appointments/${appointmentId}/download`,
+      {responseType:'blob'})
+  }
 }
