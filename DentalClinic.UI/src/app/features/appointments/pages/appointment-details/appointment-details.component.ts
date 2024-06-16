@@ -36,4 +36,18 @@ export class AppointmentDetailsComponent {
         this.router.navigateByUrl('');
       });
   }
+
+  public downloadPdf(): void {
+    this.appointmentService.downloadAppointmentInfoPdf(this.appointmentId)
+      .subscribe((blob: Blob) => {
+        const url = window.URL.createObjectURL(blob);
+        const anchor = document.createElement('a');
+        anchor.download = `appointment.pdf`;
+        anchor.href = url;
+        anchor.click();
+        window.URL.revokeObjectURL(url);
+      }, error => {
+        console.error('Error downloading the file');
+      });
+  }
 }
