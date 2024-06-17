@@ -7,4 +7,6 @@ export interface DentistCreateModel{
   email: string;
   password: string;
   birthDate: string;
+  address: string;
+  phoneNumber: string;
 }
