@@ -85,6 +85,26 @@
         <small class="red-color">{{ errorMessages['BirthDate'] }}</small>
       }
     </div>
+    <div>
+      <div>
+        <label for="phoneNumber"><span class="red-color">*</span>Номер телефона</label>
+        <div>
+          <input formControlName="phoneNumber" id="phoneNumber" mask="(00)000-00-00" prefix="+375" type='text'>
+        </div>
+        @if(!dentistCreateForm.controls.phoneNumber.valid && dentistCreateForm.controls.phoneNumber.touched){
+          <small style="color: red;">Поля обязательно для заполнения</small>
+        }
+      </div>
+      <div>
+        <label for="address"><span class="red-color">*</span>Адрес:</label>
+        <div>
+          <input formControlName="address" id="address" type="text">
+        </div>
+        @if (!dentistCreateForm.controls.address.valid && dentistCreateForm.controls.address.touched) {
+          <small style="color: red;">Поля обязательно для заполнения</small>
+        }
+      </div>
+    </div>
     <button type="submit" class="registration-button" (click)="submit()">Добавить</button>
   </form>
 </div>

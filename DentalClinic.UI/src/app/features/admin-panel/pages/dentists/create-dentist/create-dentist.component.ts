@@ -6,11 +6,12 @@ import {DentistCreateModel} from "../../../models/dentist/dentist-create.model";
 import {Specialization} from "../../../../appointments/models/specialization";
 import {HttpErrorResponse} from "@angular/common/http";
 import {CreateDentistErrorMessages} from "./create-dentist-error-messages";
+import {NgxMaskDirective} from "ngx-mask";
 
 @Component({
   selector: 'app-create-dentist',
   standalone: true,
-  imports: [ReactiveFormsModule, FormsModule],
+  imports: [ReactiveFormsModule, FormsModule, NgxMaskDirective],
   templateUrl: './create-dentist.component.html',
   styleUrl: './create-dentist.component.css'
 })
@@ -26,7 +27,9 @@ export class CreateDentistComponent implements OnInit {
     patronymic: new FormControl(''),
     birthDate: new FormControl('', [Validators.required]),
     cabinetNumber: new FormControl('', [Validators.required, Validators.min(1), Validators.max(26)]),
-    specialization: new FormControl('')
+    specialization: new FormControl(''),
+    address: new FormControl('', [Validators.required]),
+    phoneNumber: new FormControl('', [Validators.required])
   });
 
   public errorMessages: { [key: string]: string } = {};
@@ -61,7 +64,9 @@ export class CreateDentistComponent implements OnInit {
       specialization: formValues.specialization!,
       email: formValues.email!,
       password: formValues.password!,
-      birthDate: formValues.birthDate!
+      birthDate: formValues.birthDate!,
+      address: formValues.address!,
+      phoneNumber: '+375' + formValues.phoneNumber!
     };
 
     console.log(dentist);
