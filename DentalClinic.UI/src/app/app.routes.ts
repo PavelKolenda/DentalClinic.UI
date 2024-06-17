@@ -32,6 +32,17 @@ import {
 import {
   SpecializationCreateComponent
 } from "./features/admin-panel/pages/specializations/specialization-create/specialization-create.component";
+import {
+  WorkingScheduleListComponent
+} from "./features/admin-panel/pages/working-schedule/working-schedule-list/working-schedule-list.component";
+import {
+  WorkingScheduleUpdateComponent
+} from "./features/admin-panel/pages/working-schedule/working-schedule-update/working-schedule-update.component";
+import {
+  WorkingScheduleCreateComponent
+} from "./features/admin-panel/pages/working-schedule/working-schedule-create/working-schedule-create.component";
+import {AdminPanelComponent} from "./features/admin-panel/admin-panel/admin-panel.component";
+import {DentistUpdateComponent} from "./features/admin-panel/pages/dentists/dentist-update/dentist-update.component";
 
 export const routes: Routes = [
   { path: 'registration', component: RegistrationComponent },
@@ -53,6 +64,10 @@ export const routes: Routes = [
     canActivate: [isLoggedGuard, isDentistGuard]
   },
   {
+    path: 'admin',
+    component: AdminPanelComponent
+  },
+  {
     path: 'admin/dentists-list',
     component: DentistsListComponent
   },
@@ -69,6 +84,10 @@ export const routes: Routes = [
     component: CreateDentistComponent
   },
   {
+    path: 'admin/dentist/:dentistId/update',
+    component: DentistUpdateComponent
+  },
+  {
     path: 'admin/specializations-list',
     component: SpecializationsListComponent
   },
@@ -79,6 +98,18 @@ export const routes: Routes = [
   {
     path: 'admin/specializations/create',
     component: SpecializationCreateComponent
+  },
+  {
+    path: 'admin/working-schedule-list',
+    component: WorkingScheduleListComponent
+  },
+  {
+    path: 'admin/working-schedule/:workingScheduleId/update',
+    component: WorkingScheduleUpdateComponent
+  },
+  {
+    path: 'admin/working-schedule/create',
+    component: WorkingScheduleCreateComponent
   },
   { path: 'appointment/:specializationId', component: SelectDentistComponent },
   { path: 'appointment/:specializationId/:dentistId', component: SelectAppointmentComponent }
