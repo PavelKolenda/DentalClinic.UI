@@ -7,6 +7,8 @@ import {HttpClient, HttpParams} from "@angular/common/http";
 import {PagedRequest} from "../../../shared/models/paged-request";
 import {environments} from "../../../../environments/environments.development";
 import {DentistCreateModel} from "../models/dentist/dentist-create.model";
+import {DentistUpdateModel} from "../models/dentist/dentist-update-model";
+import {DentistAsUserModel} from "../models/dentist/dentist-as-user.model";
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +16,7 @@ import {DentistCreateModel} from "../models/dentist/dentist-create.model";
 export class AdminDentistsService {
   constructor(private authService: AuthService, private http: HttpClient) { }
 
-  public getDentist(pagedRequest: PagedRequest): Observable<PagedResponse<Dentist>> {
+  public getPaged(pagedRequest: PagedRequest): Observable<PagedResponse<Dentist>> {
     let params = new HttpParams()
       .set('page', pagedRequest.page.toString())
       .set('pageSize', pagedRequest.pageSize.toString())
@@ -41,7 +43,14 @@ export class AdminDentistsService {
     return this.http.delete<void>(`${environments.apiUrl}dentists/${id}`);
   }
 
-  public updateDentist(id: number, dentist: Dentist): Observable<void> {
+  public updateDentist(id: number, dentist: DentistUpdateModel): Observable<void> {
     return this.http.put<void>(`${environments.apiUrl}dentists/${id}`, dentist);
+  }
+
+  public getDentistAsUser(id: number): Observable<DentistAsUserModel> {
+    return this.http.get<DentistAsUserModel>(`${environments.apiUrl}dentists/${id}`)
+      .pipe(map((response => {
+        return response;
+      })));
   }
 }
