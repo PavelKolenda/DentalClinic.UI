@@ -20,14 +20,14 @@
     </select>
   </div>
 
-  @if(this.errorMessages['InvalidTime']){
+  @if(this.errorMessages['ScheduleExists']){
     <div>
-      <small style="color: red">Не правильно введено время</small>
+      <small style="color: red">{{errorMessages['ScheduleExists']}}</small>
     </div>
   }
   @if(this.errorMessages['WorkingDayMoreThan12Hours']){
     <div>
-      <small style="color: red">Расписание уже существует</small>
+      <small style="color: red">{{errorMessages['WorkingDayMoreThan12Hours']}}</small>
     </div>
   }
   @if(this.errorMessages['Start']){
