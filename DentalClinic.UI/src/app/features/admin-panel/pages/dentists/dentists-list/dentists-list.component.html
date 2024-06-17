@@ -1,6 +1,6 @@
 <div class="wrapper">
   <h4 class="title">Врачи</h4>
-  <button class="create-button">Добавить</button>
+  <button class="create-button" (click)="router.navigateByUrl('/admin/dentist/create')">Добавить</button>
 
   <table class="model-table">
     <thead>
@@ -22,7 +22,7 @@
         <td>{{dentist.cabinetNumber}}</td>
         <td>{{dentist.specialization}}</td>
         <td>
-          <button class="update-button">Обновить</button>
+          <button class="update-button" (click)="router.navigateByUrl('/admin/dentist/'+dentist.id+'/update')">Обновить</button>
           <button class="delete-button" (click)="deleteDentist(dentist.id)">Удалить</button>
           <button (click)="router.navigateByUrl('/admin/dentist/'+dentist.id+'/working-schedule')">Расписание</button>
         </td>

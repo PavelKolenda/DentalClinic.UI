@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {AdminDentistsService} from "../../../services/admin-dentists.service";
-import {Router} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {Dentist} from "../../../../appointments/models/dentist";
 import {FormsModule} from "@angular/forms";
 import {SortService} from "../../../../../shared/services/sort.service";
@@ -10,7 +10,8 @@ import { ListComponent } from '../../../../../shared/components/list-component/l
   selector: 'app-dentists-list',
   standalone: true,
   imports: [
-    FormsModule
+    FormsModule,
+    RouterLink
   ],
   templateUrl: './dentists-list.component.html',
   styleUrls: [
@@ -25,7 +26,7 @@ export class DentistsListComponent extends ListComponent<Dentist>  {
   }
 
   protected getItems(): void {
-    this.adminService.getDentist(this.pagedRequest).subscribe((response) => {
+    this.adminService.getPaged(this.pagedRequest).subscribe((response) => {
       this.items = response;
     });
   }
