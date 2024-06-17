@@ -21,10 +21,21 @@
 
   @if (this.authService.isLogin()) {
     @if (this.authService.currentUserSignal()?.roles!.includes('Admin')) {
-      <div><a routerLink="" class="user-link">Панель администратора</a></div>
+      <div><a routerLink="admin" class="user-link">Панель администратора</a></div>
     }
     @if (this.authService.currentUserSignal()?.roles!.includes('Dentist'); ) {
-      <div><a routerLink="" class="user-link">Панель врача</a></div>
+      <div><a routerLink="dentist/appointments-list" class="user-link">Панель врача</a></div>
+    }
+    @if(this.authService.currentUserSignal()?.roles!.includes('Patient')){
+      <div>
+        <a routerLink="appointment">Запись</a>
+      </div>
+      <div>
+        <a routerLink="appointments">Записи</a>
+      </div>
+      <div>
+        <a routerLink="notifications">Уведомления</a>
+      </div>
     }
     <div class="user-name">
       {{ authService.currentUserSignal()?.user!.name }} {{ authService.currentUserSignal()?.user!.surname }}
