@@ -34,14 +34,14 @@ export class AdminWorkingScheduleService {
   }
 
   public create(workingSchedule: WorkingScheduleCreateModel): Observable<WorkingScheduleModel> {
-    return this.http.post<WorkingScheduleModel>(`${environments.apiUrl}workingschedules`, {workingSchedule})
+    return this.http.post<WorkingScheduleModel>(`${environments.apiUrl}workingschedules`, workingSchedule)
       .pipe(map((response => {
       return response;
     })));
   }
 
   public update(id: number, workingSchedule: WorkingScheduleUpdateModel): Observable<void>{
-    return this.http.put<void>(`${environments.apiUrl}workingschedules/${id}`,{workingSchedule});
+    return this.http.put<void>(`${environments.apiUrl}workingschedules/${id}`, workingSchedule);
   }
 
   public delete(id: number): Observable<void> {
