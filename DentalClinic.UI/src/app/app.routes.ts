@@ -48,6 +48,7 @@ import {NotificationsComponent} from "./features/patient/pages/notifications/not
 import {isPatientGuard} from "./is-patient.guard";
 import {NewsListComponent} from "./features/news/news-list/news-list.component";
 import {NewsComponent} from "./features/news/news/news.component";
+import {NewsCreateComponent} from "./features/admin-panel/pages/news/news-create/news-create.component";
 
 export const routes: Routes = [
   { path: 'registration', component: RegistrationComponent },
@@ -84,6 +85,11 @@ export const routes: Routes = [
   {
     path: 'admin',
     component: AdminPanelComponent,
+    canActivate: [isLoggedGuard, isAdminGuard]
+  },
+  {
+    path: 'admin/news/create',
+    component: NewsCreateComponent,
     canActivate: [isLoggedGuard, isAdminGuard]
   },
   {
