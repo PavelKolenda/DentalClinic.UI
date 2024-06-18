@@ -46,11 +46,21 @@ import {DentistUpdateComponent} from "./features/admin-panel/pages/dentists/dent
 import {isAdminGuard} from "./is-admin.guard";
 import {NotificationsComponent} from "./features/patient/pages/notifications/notifications.component";
 import {isPatientGuard} from "./is-patient.guard";
+import {NewsListComponent} from "./features/news/news-list/news-list.component";
+import {NewsComponent} from "./features/news/news/news.component";
 
 export const routes: Routes = [
   { path: 'registration', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
   { path: 'appointment', component: SelectSpecializationComponent },
+  {
+    path: '',
+    component: NewsListComponent
+  },
+  {
+    path: 'news/:newsId',
+    component: NewsComponent
+  },
   {
     path: 'notifications',
     component: NotificationsComponent,
