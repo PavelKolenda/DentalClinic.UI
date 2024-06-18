@@ -1,0 +1,40 @@
+<div class="news-create-container">
+  <h2>Обновление новости</h2>
+  <form [formGroup]="newsUpdateForm" (ngSubmit)="update()">
+    <div class="form-field">
+      <label for="title">Заголовок</label>
+      <input type="text" id="title" formControlName="title">
+      @if(newsUpdateForm.get('title')?.invalid && newsUpdateForm.get('title')?.touched){
+        <div class="validation-message">
+          <span>Поле обязательно для заполнения.</span>
+        </div>
+        @if(newsUpdateForm.get('title')?.errors?.['minlength']){
+          <div class="validation-message">
+            <span>Длина заголовка должна быть минимум 5 символов</span>
+          </div>
+        }
+      }
+    </div>
+
+    <div class="form-field">
+      <label for="text">Информация</label>
+      <textarea id="text" formControlName="text"></textarea>
+      @if(newsUpdateForm.get('text')?.invalid && newsUpdateForm.get('text')?.touched){
+        <div class="validation-message">
+          <span>Поле обязательно для заполнения.</span>
+        </div>
+      }
+    </div>
+
+    <div class="form-field">
+      <label for="createdAt">Дата создания</label>
+      <input type="datetime-local" id="createdAt" formControlName="createdAt">
+      @if(newsUpdateForm.get('createdAt')?.invalid && newsUpdateForm.get('createdAt')?.touched){
+        <div class="validation-message">
+          <span>Поле обязательно для заполнения.</span>
+        </div>
+      }
+    </div>
+    <button type="submit" [disabled]="!newsUpdateForm.valid">Обновить</button>
+  </form>
+</div>
