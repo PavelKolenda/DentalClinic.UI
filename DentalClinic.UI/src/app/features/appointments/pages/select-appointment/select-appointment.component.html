@@ -7,7 +7,7 @@
     @for (day of calendarDays; track day) {
       <div class="calendar-cell" (click)="showAppointments(day)">
         <div class="date">
-          {{ day.date | date: 'MM-dd' }}
+          {{ day.date | date: 'dd.MM' }}
         </div>
         <div class="appointment-count">{{ day.count }}</div>
       </div>
