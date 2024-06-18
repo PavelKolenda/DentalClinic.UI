@@ -1,0 +1,42 @@
+<div class="wrapper">
+  <h4 class="title">Рабочее расписание</h4>
+  <button class="create-button" (click)="this.router.navigateByUrl('/admin/working-schedule/create')">Добавить</button>
+
+  <table class="model-table">
+    <thead>
+    <tr>
+      <th>Начало</th>
+      <th>Конец</th>
+      <th>День недели</th>
+      <th>Действия</th>
+    </tr>
+    </thead>
+    <tbody>
+      @for(workingSchedule of items?.items; track workingSchedule){
+        <tr>
+          <td>{{workingSchedule.start}}</td>
+          <td>{{workingSchedule.end}}</td>
+          <td>{{workingSchedule.workingDay}}</td>
+          <td>
+            <button class="update-button" (click)="this.router.navigateByUrl('/admin/working-schedule/'+workingSchedule.id+'/update')">Обновить</button>
+            <button class="delete-button" (click)="deleteWorkingSchedule(workingSchedule.id)">Удалить</button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+
+  <div class="pagination">
+    <div>
+      <label for="pageSize">Количество: </label>
+      <select id="pageSize" [(ngModel)]="pagedRequest.pageSize" (change)="getItems()">
+        <option value="10">10</option>
+        <option value="20">20</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+      </select>
+    </div>
+    <button class="page-button" (click)="previousPage()" [disabled]="!items?.hasPreviousPage">Назад</button>
+    <button class="page-button" (click)="nextPage()" [disabled]="!items?.hasNextPage">Вперед</button>
+  </div>
+</div>

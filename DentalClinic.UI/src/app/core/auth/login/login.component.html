@@ -1,6 +1,6 @@
 <div class="registration-form-container">
+  <h3>Вход</h3>
   <form class="registration-form" [formGroup]="userLoginForm">
-
     <div>
       <label for="email"><span class="red-color">*</span>Электронная почта:</label>
       <div>
@@ -17,6 +17,9 @@
       </div>
       @if (!userLoginForm.controls.password.valid && userLoginForm.controls.password.touched) {
         <small style="color: red;">Поля обязательно для заполнения</small>
+      }
+      @if (errorMessages['CredentialsDontExists']) {
+        <small class="red-color">{{ errorMessages['CredentialsDontExists'] }}</small>
       }
     </div>
     <small class="have-account-link"><a routerLink="/registration">Нет аккаунта?</a></small>

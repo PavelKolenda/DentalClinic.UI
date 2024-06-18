@@ -1,0 +1,44 @@
+<form (ngSubmit)="create()" [formGroup]="workingScheduleCreateForm">
+  <div class="form-group">
+    <label for="start">Начало</label>
+    <input class="form-control" formControlName="start" id="start" mask="00:00" type="text">
+  </div>
+  <div class="form-group">
+    <label for="end">Конец</label>
+    <input class="form-control" formControlName="end" id="end" mask="00:00" type="text">
+  </div>
+  <div class="form-group">
+    <label for="workingDay">Выберите день:</label>
+    <select class="form-control" formControlName="workingDay" id="workingDay">
+      <option value="понедельник">Понедельник</option>
+      <option value="вторник">Вторник</option>
+      <option value="среда">Среда</option>
+      <option value="четверг">Четверг</option>
+      <option value="пятница">Пятница</option>
+      <option value="суббота">Суббота</option>
+      <option value="воскресенье">Воскресенье</option>
+    </select>
+  </div>
+
+  @if(this.errorMessages['ScheduleExists']){
+    <div>
+      <small style="color: red">{{errorMessages['ScheduleExists']}}</small>
+    </div>
+  }
+  @if(this.errorMessages['WorkingDayMoreThan12Hours']){
+    <div>
+      <small style="color: red">{{errorMessages['WorkingDayMoreThan12Hours']}}</small>
+    </div>
+  }
+  @if(this.errorMessages['Start']){
+    <div>
+      <small style="color: red">{{errorMessages['Start']}}</small>
+    </div>
+  }
+  @if(this.errorMessages['End']){
+    <div>
+      <small style="color: red">{{errorMessages['End']}}</small>
+    </div>
+  }
+  <button [disabled]="!workingScheduleCreateForm.valid" class="btn btn-primary" type="submit">Добавить</button>
+</form>

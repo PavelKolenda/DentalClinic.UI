@@ -1,0 +1,70 @@
+<div class="wrapper">
+  <h4 class="title">Рабочее расписание врача:
+    {{dentistWorkingSchedule?.dentistName}}
+    {{dentistWorkingSchedule?.dentistSurname}}
+    {{dentistWorkingSchedule?.dentistPatronymic}}</h4>
+
+  @if(dentistWorkingSchedule){
+    <table class="schedule-table">
+      <thead>
+      <tr>
+        <th>День недели</th>
+        <th>Время начала</th>
+        <th>Время окончания</th>
+        <th>Действия</th>
+      </tr>
+      </thead>
+      <tbody>
+      @for(schedule of dentistWorkingSchedule.workingSchedule; track schedule){
+        <tr>
+          <td>{{schedule.workingDay}}</td>
+          <td>{{schedule.start}}</td>
+          <td>{{schedule.end}}</td>
+          <td>
+            <button class="delete-button" (click)="deleteDentistWorkingSchedule(schedule.id)">Удалить</button>
+          </td>
+        </tr>
+      }
+      </tbody>
+    </table>
+  }
+  <div>
+    <button class="create-button" (click)="showAdd = true">Добавить расписание</button>
+    @if(showAdd){
+      <button class="create-button" (click)="showAdd = false">Скрыть</button>
+    }
+  </div>
+  @if (showAdd){
+    <div>
+      <div>
+        <label for="workingDay">Выберите день:</label>
+        <select id="workingDay" [(ngModel)]="selectedDay" (change)="getWorkingSchedulesForDay()">
+          <option value="понедельник">Понедельник</option>
+          <option value="вторник">Вторник</option>
+          <option value="среда">Среда</option>
+          <option value="четверг">Четверг</option>
+          <option value="пятница">Пятница</option>
+          <option value="суббота">Суббота</option>
+          <option value="воскресенье">Воскресенье</option>
+        </select>
+        @if(workingSchedulesForDay.length > 0){
+          <div>
+            <h5>Досутпное расписание на {{selectedDay}}:</h5>
+            <ul>
+              @for (schedule of workingSchedulesForDay; track schedule){
+                <div class="available-schedule">
+                  <li>
+                    {{schedule.start}} - {{schedule.end}}
+                    <button (click)="addWorkingScheduleToDentist(schedule.id)" class="add-to-button">
+                      Добавить
+                    </button>
+                  </li>
+                </div>
+              }
+            </ul>
+          </div>
+        }
+      </div>
+    </div>
+  }
+</div>

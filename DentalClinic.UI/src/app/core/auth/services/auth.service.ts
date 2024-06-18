@@ -1,4 +1,4 @@
-import {computed, Injectable, signal} from '@angular/core';
+import {Injectable, signal} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {catchError, EMPTY, map, Observable, take, tap} from "rxjs";
 import {AuthResponse} from "../models/AuthResponse";
@@ -31,7 +31,17 @@ export class AuthService {
     return roles.includes('Dentist');
   }
 
-  public register(email?: string, password?: string, name?: string, surname?: string, patronymic?: string, birthDate?: string): Observable<AuthResponse> {
+  public isAdmin(): boolean{
+    const token = this.jwtService.getToken();
+    if(!token) return false;
+
+    const decoded = jwtDecode<RoleJwtPayload>(token);
+    const roles: string[] = decoded.role || [];
+
+    return roles.includes('Admin');
+  }
+
+  public register(email?: string, password?: string, name?: string, surname?: string, patronymic?: string, birthDate?: string, phoneNumber?: string, address?: string): Observable<AuthResponse> {
 
     return this.http.post<AuthResponse>(`${environments.apiUrl}auth/register`, {
       email,
@@ -39,7 +49,9 @@ export class AuthService {
       name,
       surname,
       patronymic,
-      birthDate
+      birthDate,
+      phoneNumber,
+      address
     }, httpOptions)
       .pipe(map(response => {
         this.jwtService.setToken(response.token);
@@ -81,27 +93,21 @@ export class AuthService {
     return !this.isTokenExpired(token);
   }
 
-  //Send request to api. But don't set user signal.
   private getInitialUserState(): void {
     const token = this.jwtService.getToken();
     if (token && !this.isTokenExpired(token)) {
       this.http.get<AuthResponse>(`${environments.apiUrl}auth`).pipe(
         tap((response) => {
-          console.log(response);
           this.currentUserSignal.set(response);
+          console.log(this.currentUserSignal())
         }),
         catchError((error) => {
           console.error(error);
           this.currentUserSignal.set(null);
           return EMPTY;
         })
-      ).subscribe(() => {
-        console.log(this.currentUserSignal());
-      });
-    } else {
-      this.currentUserSignal.set(null);
+      ).subscribe();
     }
-    console.log(this.currentUserSignal());
   }
 }
 
