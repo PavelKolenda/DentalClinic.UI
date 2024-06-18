@@ -23,7 +23,7 @@
     @if (this.authService.currentUserSignal()?.roles!.includes('Admin')) {
       <div><a routerLink="admin" class="user-link">Панель администратора</a></div>
     }
-    @if (this.authService.currentUserSignal()?.roles!.includes('Dentist'); ) {
+    @if (this.authService.currentUserSignal()?.roles!.includes('Dentist')) {
       <div><a routerLink="dentist/appointments-list" class="user-link">Панель врача</a></div>
     }
     @if(this.authService.currentUserSignal()?.roles!.includes('Patient')){

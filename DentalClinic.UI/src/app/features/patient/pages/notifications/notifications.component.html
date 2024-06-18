@@ -1,0 +1,35 @@
+<div class="wrapper">
+  <h3>Уведомления</h3>
+  @if(items?.totalCount == 0){
+    <div><h4 style="display: flex; justify-content: center">У вас нет уведомлений</h4></div>
+  }
+
+  <div class="notifications-list">
+  @for (notification of items?.items; track notification){
+    <div class="notification-item">
+        <div>
+          <h5 class="notification-title">{{ notification.article }}</h5>
+        </div>
+        <div>
+          <span class="notification-text">{{ notification.text }}</span>
+        </div>
+        <div>
+          <small class="notification-date">{{ notification.sandedAt | date:'dd.MM.yyyy HH:mm' }}</small>
+        </div>
+      </div>
+  }
+  </div>
+
+  <div class="pagination">
+    <div>
+      <label for="pageSize">Количество: </label>
+      <select id="pageSize" [(ngModel)]="pagedRequest.pageSize" (change)="getItems()">
+        <option value="10">1</option>
+        <option value="20">5</option>
+      </select>
+    </div>
+    <button class="page-button" (click)="previousPage()" [disabled]="!items?.hasPreviousPage">Назад</button>
+    <button class="page-button" (click)="nextPage()" [disabled]="!items?.hasNextPage">Вперед</button>
+  </div>
+
+</div>

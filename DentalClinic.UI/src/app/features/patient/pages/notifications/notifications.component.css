@@ -1,0 +1,23 @@
+.notifications-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.notification-item {
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+}
+
+.notification-title {
+  font-weight: bold;
+}
+
+.notification-text {
+  margin-left: 1rem;
+}
+
+.notification-date {
+  margin-left: auto;
+}

@@ -44,15 +44,22 @@ import {
 import {AdminPanelComponent} from "./features/admin-panel/admin-panel/admin-panel.component";
 import {DentistUpdateComponent} from "./features/admin-panel/pages/dentists/dentist-update/dentist-update.component";
 import {isAdminGuard} from "./is-admin.guard";
+import {NotificationsComponent} from "./features/patient/pages/notifications/notifications.component";
+import {isPatientGuard} from "./is-patient.guard";
 
 export const routes: Routes = [
   { path: 'registration', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
   { path: 'appointment', component: SelectSpecializationComponent },
   {
+    path: 'notifications',
+    component: NotificationsComponent,
+    canActivate: [isLoggedGuard, ]
+  },
+  {
     path: 'appointment/details/:appointmentId',
     component: AppointmentDetailsComponent,
-    canActivate: [isLoggedGuard]
+    canActivate: [isLoggedGuard, isPatientGuard]
   },
   {
     path: 'appointments',
