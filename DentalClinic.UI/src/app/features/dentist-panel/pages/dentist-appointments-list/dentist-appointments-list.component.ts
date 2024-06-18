@@ -5,6 +5,8 @@ import {PagedResponse} from "../../../../shared/models/paged-response";
 import {AppointmentDetails} from "../../../appointments/models/appointment-details";
 import {FormsModule} from "@angular/forms";
 import {DateToHHmmPipe} from "../../../../shared/DateToHHmmPipe";
+import {Router} from "@angular/router";
+import {AuthService} from "../../../../core/auth/services/auth.service";
 
 @Component({
   selector: 'app-dentist-appointments-list',
@@ -18,7 +20,9 @@ import {DateToHHmmPipe} from "../../../../shared/DateToHHmmPipe";
 })
 export class DentistAppointmentsListComponent implements OnInit{
 
-  constructor(private readonly dentistsService: DentistsService) {}
+  constructor(private readonly dentistsService: DentistsService,
+              private router: Router,
+              private authService: AuthService) {}
 
   appointmentsDetails: PagedResponse<AppointmentDetails> | null = null;
   selectedDate: string = new Date().toISOString().split('T')[0];
@@ -55,5 +59,10 @@ export class DentistAppointmentsListComponent implements OnInit{
       this.pagedRequest.page--;
       this.loadAppointments();
     }
+  }
+
+  patientReenrolment(patientId: number): void{
+    let dentistId = this.authService.getDentistIdFromToken();
+    this.router.navigateByUrl(`dentist/${dentistId}/${patientId}/patient-reenrollment`);
   }
 }
