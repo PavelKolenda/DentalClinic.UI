@@ -5,11 +5,12 @@ import {catchError, map, Observable} from "rxjs";
 import {PagedResponse} from "../../../shared/models/paged-response";
 import {environments} from "../../../../environments/environments.development";
 import {PatientModel} from "../models/patients/patient.model";
+import {PatientUpdateModel} from "../../patient/models/patient-update.model";
 
 @Injectable({
   providedIn: 'root'
 })
-export class AdminPatientsService {
+export class PatientsService {
 
   constructor(private http: HttpClient) { }
 
@@ -30,5 +31,16 @@ export class AdminPatientsService {
 
   public delete(id: number): Observable<void> {
     return this.http.delete<void>(`${environments.apiUrl}patients/${id}`);
+  }
+
+  public getById(id: number): Observable<PatientModel>{
+    return this.http.get<PatientModel>(`${environments.apiUrl}patients/${id}`)
+      .pipe(map((response => {
+        return response;
+      })))
+  }
+
+  public update(id: number, patient: PatientUpdateModel){
+    return this.http.put<void>(`${environments.apiUrl}patients/${id}`, patient);
   }
 }

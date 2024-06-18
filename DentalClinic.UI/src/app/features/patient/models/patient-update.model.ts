@@ -1,10 +1,10 @@
-export interface PatientModel {
-  id: number;
+export interface PatientUpdateModel{
   name: string;
   surname: string;
   patronymic: string;
   email: string;
+  password: string;
   birthDate: string;
-  phoneNumber: string;
   address: string;
+  phoneNumber: string;
 }

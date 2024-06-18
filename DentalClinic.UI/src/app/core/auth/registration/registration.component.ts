@@ -58,6 +58,7 @@ export class RegistrationComponent {
     this.authService.register(email, password, name, surname, patronymic, birthDate, phoneNumber, address)
       .subscribe({
         next: (response) => {
+          this.errorMessages = {};
           this.authService.currentUserSignal.set(response);
           this.router.navigateByUrl('/');
         }, error: (error: HttpErrorResponse) => {

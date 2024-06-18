@@ -43,6 +43,7 @@ export class LoginComponent {
 
     this.authService.login(email, password).subscribe({
       next: (response) => {
+        this.errorMessages = {};
         this.authService.currentUserSignal.set(response);
         this.router.navigateByUrl('/');
       },

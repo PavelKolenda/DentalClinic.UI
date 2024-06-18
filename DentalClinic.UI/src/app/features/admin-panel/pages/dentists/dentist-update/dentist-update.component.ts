@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AdminDentistsService} from "../../../services/admin-dentists.service";
 import {AppointmentService} from "../../../../appointments/services/appointment.service";
 import {Specialization} from "../../../../appointments/models/specialization";
@@ -24,7 +24,7 @@ import {NgxMaskDirective} from "ngx-mask";
     './../create-dentist/create-dentist.component.css'
     ]
 })
-export class DentistUpdateComponent {
+export class DentistUpdateComponent implements OnInit{
 
   specializations: Specialization[] | null = null;
   dentistId: number = 0;

@@ -3,7 +3,7 @@ import {ListComponent} from "../../../../../shared/components/list-component/lis
 import {PatientModel} from "../../../models/patients/patient.model";
 import {Router} from "@angular/router";
 import {SortService} from "../../../../../shared/services/sort.service";
-import {AdminPatientsService} from "../../../services/admin-patients.service";
+import {PatientsService} from "../../../services/patients.service";
 import {FormsModule} from "@angular/forms";
 
 @Component({
@@ -20,7 +20,7 @@ import {FormsModule} from "@angular/forms";
 })
 export class PatientsListComponent extends ListComponent<PatientModel> {
 
-  constructor(private patientService: AdminPatientsService, private router: Router, sortService: SortService) {
+  constructor(private patientService: PatientsService, private router: Router, sortService: SortService) {
     super(sortService);
   }
 

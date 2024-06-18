@@ -54,6 +54,7 @@ import {AdminNewsListComponent} from "./features/admin-panel/pages/news/admin-ne
 import {
   PatientReenrollmentComponent
 } from "./features/dentist-panel/patient-reenrollment/patient-reenrollment.component";
+import {PatientUpdateComponent} from "./features/patient/pages/patient-update/patient-update.component";
 
 export const routes: Routes = [
   { path: 'registration', component: RegistrationComponent },
@@ -70,7 +71,12 @@ export const routes: Routes = [
   {
     path: 'notifications',
     component: NotificationsComponent,
-    canActivate: [isLoggedGuard, ]
+    canActivate: [isLoggedGuard, isPatientGuard]
+  },
+  {
+    path: 'update',
+    component: PatientUpdateComponent,
+    canActivate: [isLoggedGuard, isPatientGuard]
   },
   {
     path: 'appointment/details/:appointmentId',

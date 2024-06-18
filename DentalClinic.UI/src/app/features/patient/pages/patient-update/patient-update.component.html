@@ -1,0 +1,93 @@
+<h3>Изменение информации</h3>
+<div class="registration-form-container">
+  <form [formGroup]="patientUpdateForm" class="registration-form">
+    <div>
+      <label for="email"><span class="red-color">*</span>Электронная почта:</label>
+      <div>
+        <input formControlName="email" id="email" type="text">
+      </div>
+      @if (!patientUpdateForm.controls.email.valid && patientUpdateForm.controls.email.touched) {
+        <small style="color: red;">Поля обязательно для заполнения</small>
+      }
+      @if (errorMessages['Email']) {
+        <small class="red-color">{{ errorMessages['Email'] }}</small>
+      }
+    </div>
+    <div>
+      <label for="password"><span class="red-color">*</span>Пароль:</label>
+      <div>
+        <input formControlName="password" id="password" type="password">
+      </div>
+      @if (errorMessages['Password']) {
+        <small class="red-color">{{ errorMessages['Password'] }}</small>
+      }
+    </div>
+    <div>
+      <label for="name"><span class="red-color">*</span>Имя:</label>
+      <div>
+        <input formControlName="name" id="name" type="text">
+      </div>
+      @if (!patientUpdateForm.controls.name.valid && patientUpdateForm.controls.name.touched) {
+        <small style="color: red;">Поля обязательно для заполнения</small>
+      }
+      @if (errorMessages['Name']) {
+        <small class="red-color">{{ errorMessages['Name'] }}</small>
+      }
+    </div>
+    <div>
+      <label for="surname"><span class="red-color">*</span>Фамилия:</label>
+      <div>
+        <input formControlName="surname" id="surname" type="text">
+      </div>
+      @if (!patientUpdateForm.controls.surname.valid && patientUpdateForm.controls.surname.touched) {
+        <small style="color: red;">Поля обязательно для заполнения</small>
+      }
+      @if (errorMessages['Surname']) {
+        <small class="red-color">{{ errorMessages['Surname'] }} </small>
+      }
+    </div>
+    <div>
+      <label for="patronymic">Отчество:</label>
+      <div>
+        <input formControlName="patronymic" id="patronymic" type="text">
+      </div>
+    </div>
+    <div>
+      <label for="birthDate"><span class="red-color">*</span>Дата рождения:</label>
+      <div>
+        <input [max]="today" formControlName="birthDate" id="birthDate" type="date">
+      </div>
+      @if (!patientUpdateForm.controls.birthDate.valid && patientUpdateForm.controls.birthDate.touched) {
+        <small style="color: red;">Поля обязательно для заполнения</small>
+      }
+      @if (errorMessages['BirthDate']) {
+        <small class="red-color">{{ errorMessages['BirthDate'] }}</small>
+      }
+    </div>
+    <div>
+      <label for="phoneNumber"><span class="red-color">*</span>Номер телефона:</label>
+      <div>
+        <input formControlName="phoneNumber" id="phoneNumber" mask="(00)000-00-00" prefix="+375" type='text'>
+      </div>
+      @if (!patientUpdateForm.controls.phoneNumber.valid && patientUpdateForm.controls.phoneNumber.touched) {
+        <small style="color: red;">Поля обязательно для заполнения</small>
+      }
+      @if (errorMessages['PhoneNumber']) {
+        <small class="red-color">{{ errorMessages['PhoneNumber'] }}</small>
+      }
+    </div>
+    <div>
+      <label for="address"><span class="red-color">*</span>Адрес:</label>
+      <div>
+        <input formControlName="address" id="address" type="text">
+      </div>
+      @if (!patientUpdateForm.controls.address.valid && patientUpdateForm.controls.address.touched) {
+        <small style="color: red;">Поля обязательно для заполнения</small>
+      }
+      @if (errorMessages['Address']) {
+        <small class="red-color">{{ errorMessages['Address'] }}</small>
+      }
+    </div>
+    <button (click)="update()" class="registration-button" type="submit">Обновить</button>
+  </form>
+</div>
