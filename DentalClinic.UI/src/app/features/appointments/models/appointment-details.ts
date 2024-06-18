@@ -12,4 +12,6 @@ export interface AppointmentDetails {
   patientPatronymic?: string;
   appointmentTime: string;
   appointmentDate: Date;
+  dentistId: number;
+  patientId: number;
 }
