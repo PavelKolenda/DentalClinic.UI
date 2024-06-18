@@ -21,4 +21,6 @@
 .news-content {
   font-size: 1.2rem;
   line-height: 1.6;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
