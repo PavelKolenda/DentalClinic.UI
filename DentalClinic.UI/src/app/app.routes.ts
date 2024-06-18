@@ -49,6 +49,8 @@ import {isPatientGuard} from "./is-patient.guard";
 import {NewsListComponent} from "./features/news/news-list/news-list.component";
 import {NewsComponent} from "./features/news/news/news.component";
 import {NewsCreateComponent} from "./features/admin-panel/pages/news/news-create/news-create.component";
+import {NewsUpdateComponent} from "./features/admin-panel/pages/news/news-update/news-update.component";
+import {AdminNewsListComponent} from "./features/admin-panel/pages/news/admin-news-list/admin-news-list.component";
 
 export const routes: Routes = [
   { path: 'registration', component: RegistrationComponent },
@@ -88,8 +90,18 @@ export const routes: Routes = [
     canActivate: [isLoggedGuard, isAdminGuard]
   },
   {
+    path: 'admin/news-list',
+    component: AdminNewsListComponent,
+    canActivate: [isLoggedGuard, isAdminGuard]
+  },
+  {
     path: 'admin/news/create',
     component: NewsCreateComponent,
+    canActivate: [isLoggedGuard, isAdminGuard]
+  },
+  {
+    path: 'admin/news/:newsId/update',
+    component: NewsUpdateComponent,
     canActivate: [isLoggedGuard, isAdminGuard]
   },
   {
