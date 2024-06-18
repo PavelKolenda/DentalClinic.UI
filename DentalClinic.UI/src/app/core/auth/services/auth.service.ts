@@ -41,6 +41,16 @@ export class AuthService {
     return roles.includes('Admin');
   }
 
+  public isPatient(): boolean{
+    const token = this.jwtService.getToken();
+    if(!token) return false;
+
+    const decoded = jwtDecode<RoleJwtPayload>(token);
+    const roles: string[] = decoded.role || [];
+
+    return roles.includes('Patient');
+  }
+
   public register(email?: string, password?: string, name?: string, surname?: string, patronymic?: string, birthDate?: string, phoneNumber?: string, address?: string): Observable<AuthResponse> {
 
     return this.http.post<AuthResponse>(`${environments.apiUrl}auth/register`, {
