@@ -4,7 +4,7 @@ export interface PatientModel {
   surname: string;
   patronymic: string;
   email: string;
-  birthDate: Date;
+  birthDate: string;
   phoneNumber: string;
   address: string;
 }
