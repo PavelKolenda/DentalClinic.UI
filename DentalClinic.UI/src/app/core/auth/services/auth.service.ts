@@ -1,11 +1,10 @@
-import {computed, Injectable, signal} from '@angular/core';
+import {Injectable, signal} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {catchError, EMPTY, map, Observable, take, tap} from "rxjs";
 import {AuthResponse} from "../models/AuthResponse";
 import {JwtService} from "./jwt.service";
 import {jwtDecode, JwtPayload} from "jwt-decode";
 import {environments} from "../../../../environments/environments.development";
-import {toSignal} from "@angular/core/rxjs-interop";
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -30,6 +29,16 @@ export class AuthService {
     const roles: string[] = decoded.role || [];
 
     return roles.includes('Dentist');
+  }
+
+  public isAdmin(): boolean{
+    const token = this.jwtService.getToken();
+    if(!token) return false;
+
+    const decoded = jwtDecode<RoleJwtPayload>(token);
+    const roles: string[] = decoded.role || [];
+
+    return roles.includes('Admin');
   }
 
   public register(email?: string, password?: string, name?: string, surname?: string, patronymic?: string, birthDate?: string, phoneNumber?: string, address?: string): Observable<AuthResponse> {
