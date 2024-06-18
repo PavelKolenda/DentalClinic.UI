@@ -85,6 +85,13 @@ export class AppointmentService {
       })));
   }
 
+  public patientReenrollment(patientId: number, appointmentId: number): Observable<AppointmentDetails> {
+    return this.http.post<AppointmentDetails>
+    (`${environments.apiUrl}appointments/${patientId}/${appointmentId}/reenrollment`, {}, httpOptions)
+      .pipe(map((response) => {
+        return response;
+      }));
+  }
 
   public downloadAppointmentInfoPdf(appointmentId: number){
     return this.http.get(`${environments.apiUrl}appointments/${appointmentId}/download`,
