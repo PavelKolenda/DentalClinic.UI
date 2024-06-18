@@ -36,6 +36,7 @@ export class WorkingScheduleCreateComponent {
     this.workingScheduleService.create(workingSchedule).subscribe({
       next: (response) => {
         this.workingScheduleCreateForm.reset();
+        this.errorMessages = {};
       }, error: (error: HttpErrorResponse) => {
         this.errorMessages = {};
         console.log(error);

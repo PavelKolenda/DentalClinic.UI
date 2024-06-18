@@ -51,6 +51,9 @@ import {NewsComponent} from "./features/news/news/news.component";
 import {NewsCreateComponent} from "./features/admin-panel/pages/news/news-create/news-create.component";
 import {NewsUpdateComponent} from "./features/admin-panel/pages/news/news-update/news-update.component";
 import {AdminNewsListComponent} from "./features/admin-panel/pages/news/admin-news-list/admin-news-list.component";
+import {
+  PatientReenrollmentComponent
+} from "./features/dentist-panel/patient-reenrollment/patient-reenrollment.component";
 
 export const routes: Routes = [
   { path: 'registration', component: RegistrationComponent },
@@ -83,6 +86,10 @@ export const routes: Routes = [
     path: 'dentist/appointments-list',
     component: DentistAppointmentsListComponent,
     canActivate: [isLoggedGuard, isDentistGuard]
+  },
+  {
+    path: 'dentist/:dentistId/:patientId/patient-reenrollment',
+    component: PatientReenrollmentComponent,
   },
   {
     path: 'admin',

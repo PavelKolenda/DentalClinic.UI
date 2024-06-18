@@ -31,6 +31,14 @@ export class AuthService {
     return roles.includes('Dentist');
   }
 
+  public getDentistIdFromToken(): string | null {
+    const token = this.jwtService.getToken();
+    if (!token) return null;
+
+    const decoded = jwtDecode<RoleJwtPayload>(token);
+    return decoded.dentistId || null;
+  }
+
   public isAdmin(): boolean{
     const token = this.jwtService.getToken();
     if(!token) return false;
@@ -123,4 +131,5 @@ export class AuthService {
 
 interface RoleJwtPayload extends JwtPayload {
   role: string[];
+  dentistId: string;
 }
