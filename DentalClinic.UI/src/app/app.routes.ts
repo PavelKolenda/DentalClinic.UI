@@ -43,6 +43,7 @@ import {
 } from "./features/admin-panel/pages/working-schedule/working-schedule-create/working-schedule-create.component";
 import {AdminPanelComponent} from "./features/admin-panel/admin-panel/admin-panel.component";
 import {DentistUpdateComponent} from "./features/admin-panel/pages/dentists/dentist-update/dentist-update.component";
+import {isAdminGuard} from "./is-admin.guard";
 
 export const routes: Routes = [
   { path: 'registration', component: RegistrationComponent },
@@ -65,51 +66,63 @@ export const routes: Routes = [
   },
   {
     path: 'admin',
-    component: AdminPanelComponent
+    component: AdminPanelComponent,
+    canActivate: [isLoggedGuard, isAdminGuard]
   },
   {
     path: 'admin/dentists-list',
-    component: DentistsListComponent
+    component: DentistsListComponent,
+    canActivate: [isLoggedGuard, isAdminGuard]
   },
   {
     path: 'admin/dentist/:dentistId/working-schedule',
-    component: DentistWorkingScheduleComponent
+    component: DentistWorkingScheduleComponent,
+    canActivate: [isLoggedGuard, isAdminGuard]
   },
   {
     path: 'admin/patients-list',
-    component: PatientsListComponent
+    component: PatientsListComponent,
+    canActivate: [isLoggedGuard, isAdminGuard]
   },
   {
     path: 'admin/dentist/create',
-    component: CreateDentistComponent
+    component: CreateDentistComponent,
+    canActivate: [isLoggedGuard, isAdminGuard]
   },
   {
     path: 'admin/dentist/:dentistId/update',
-    component: DentistUpdateComponent
+    component: DentistUpdateComponent,
+    canActivate: [isLoggedGuard, isAdminGuard]
   },
   {
     path: 'admin/specializations-list',
-    component: SpecializationsListComponent
+    component: SpecializationsListComponent,
+    canActivate: [isLoggedGuard, isAdminGuard]
   },
   {
     path: 'admin/specializations/:specializationId/update',
-    component: SpecializationUpdateComponent
+    component: SpecializationUpdateComponent,
+    canActivate: [isLoggedGuard, isAdminGuard]
   },
   {
     path: 'admin/specializations/create',
-    component: SpecializationCreateComponent
+    component: SpecializationCreateComponent,
+    canActivate: [isLoggedGuard, isAdminGuard]
   },
   {
     path: 'admin/working-schedule-list',
-    component: WorkingScheduleListComponent
+    component: WorkingScheduleListComponent,
+    canActivate: [isLoggedGuard, isAdminGuard]
   },
   {
     path: 'admin/working-schedule/:workingScheduleId/update',
-    component: WorkingScheduleUpdateComponent
+    component: WorkingScheduleUpdateComponent,
+    canActivate: [isLoggedGuard, isAdminGuard]
   },
   {
     path: 'admin/working-schedule/create',
-    component: WorkingScheduleCreateComponent
+    component: WorkingScheduleCreateComponent,
+    canActivate: [isLoggedGuard, isAdminGuard]
   },
   { path: 'appointment/:specializationId', component: SelectDentistComponent },
   { path: 'appointment/:specializationId/:dentistId', component: SelectAppointmentComponent }
