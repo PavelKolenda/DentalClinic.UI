@@ -1,0 +1,14 @@
+<div class="wrapper">
+  <h4>Новости</h4>
+  <div class="news-list">
+    @for (news of items?.items; track news) {
+      <div class="news-item" (click)="this.router.navigateByUrl('/news/'+news.id)">
+        <h5 class="news-title">{{ news.title }}</h5>
+        <p class="news-text">{{ news.text | truncate:45 }}</p>
+        <div class="news-footer">
+          <small class="news-date">{{ news.createdAt | date:'dd.MM.yyyy' }}</small>
+        </div>
+      </div>
+    }
+  </div>
+</div>

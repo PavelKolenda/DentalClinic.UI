@@ -1,0 +1,41 @@
+/* news-create.component.css */
+.news-create-container {
+  max-width: 600px;
+  margin: auto;
+  padding: 2rem;
+}
+
+.form-field {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: .5rem;
+}
+
+input[type=text],
+textarea,
+input[type=date] {
+  width: 100%;
+  padding: .5rem;
+  border: 1px solid #ccc;
+  border-radius: .25rem;
+}
+
+button[type=submit] {
+  padding: .5rem 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: .25rem;
+  cursor: pointer;
+}
+
+button[type=submit]:disabled {
+  background-color: #ccc;
+}
+
+.validation-message {
+  color: red;
+}
