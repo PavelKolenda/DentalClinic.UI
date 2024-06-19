@@ -37,6 +37,17 @@ export class AppointmentDetailsComponent {
       });
   }
 
+  cancelAppointment(appointmentId: number){
+    if (window.confirm('Вы уверены что хотите отменить запись?')) {
+      this.appointmentService.cancelAppointment(appointmentId)
+        .subscribe((response) => {
+          this.router.navigateByUrl('/appointments')
+        }, (error) => {
+          console.error('Error deleting dentist:', error);
+        });
+    }
+  }
+
   public downloadPdf(): void {
     this.appointmentService.downloadAppointmentInfoPdf(this.appointmentId)
       .subscribe((blob: Blob) => {
