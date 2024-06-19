@@ -1,4 +1,4 @@
-.wrapper{
+.wrapper {
   margin-top: 2.5vh;
   margin-bottom: 2.5vh;
   margin-left: 2.5vh;
@@ -6,20 +6,35 @@
   flex-direction: column;
 }
 
-.content{
+.content {
   border: 1px solid black;
   border-radius: 12px;
-  width: 90%;
+  width: 50%
 }
 
-.download-button{
+.download-button,
+.cancel-appointment {
   width: 100px;
   padding: 12px;
   border: none;
   border-radius: 12px;
-  background-color: #007bff;
-  color: white;
   cursor: pointer;
   align-self: center;
   margin-left: 2.5vh;
+}
+
+.download-button {
+  background-color: #007bff;
+  color: white;
+}
+
+.cancel-appointment {
+  background-color: red;
+  color: white;
+}
+
+@media (max-width: 500px) {
+  .content {
+    width: 90%;
+  }
 }

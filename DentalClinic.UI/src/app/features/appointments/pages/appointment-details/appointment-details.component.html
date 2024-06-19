@@ -34,4 +34,7 @@
     </div>
   </div>
 </div>
-<button class="download-button" (click)="downloadPdf()">Скачать</button>
+<div class="actions">
+  <button class="download-button" (click)="downloadPdf()">Скачать</button>
+  <button class="cancel-appointment" (click)="cancelAppointment(appointmentId)">Отменить</button>
+</div>
