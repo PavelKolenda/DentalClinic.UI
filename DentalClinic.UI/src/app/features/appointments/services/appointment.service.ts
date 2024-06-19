@@ -93,6 +93,10 @@ export class AppointmentService {
       }));
   }
 
+  public cancelAppointment(appointmentId: number) {
+    return this.http.delete<void>(`${environments.apiUrl}appointments/${appointmentId}`);
+  }
+
   public downloadAppointmentInfoPdf(appointmentId: number){
     return this.http.get(`${environments.apiUrl}appointments/${appointmentId}/download`,
       {responseType:'blob'})
