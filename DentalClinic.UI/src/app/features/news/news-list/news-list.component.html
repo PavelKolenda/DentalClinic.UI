@@ -13,14 +13,6 @@
   </div>
   <div class="pagination-wrapper">
     <div class="pagination">
-      <div>
-        <label for="pageSize">Количество: </label>
-        <select id="pageSize" [(ngModel)]="pagedRequest.pageSize" (change)="getItems()">
-          <option value="5">5</option>
-          <option value="10">10</option>
-          <option value="20">20</option>
-        </select>
-      </div>
       <button class="page-button" (click)="previousPage()" [disabled]="!items?.hasPreviousPage">Назад</button>
       <button class="page-button" (click)="nextPage()" [disabled]="!items?.hasNextPage">Вперед</button>
     </div>
