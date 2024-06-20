@@ -36,20 +36,14 @@
       <div>
         <a routerLink="update" class="user-link">Изменить</a>
       </div>
+      <div>
+        <a class="user-link" (click)="logout()">Выйти</a>
+      </div>
     </ng-container>
-    <div>
-      <button class="logout-button" (click)="logout()">Выйти</button>
-    </div>
     <div class="user-name">
       {{ authService.currentUserSignal()?.user!.name }} {{ authService.currentUserSignal()?.user!.surname }}
     </div>
   </div>
 
   <app-burger-menu></app-burger-menu>
-
-<!--  <div class="user-info" *ngIf="authService.isLogin()">-->
-<!--    <div class="user-name">-->
-<!--      {{ authService.currentUserSignal()?.user!.name }} {{ authService.currentUserSignal()?.user!.surname }}-->
-<!--    </div>-->
-<!--  </div>-->
 </div>

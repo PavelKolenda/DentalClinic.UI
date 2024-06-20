@@ -11,6 +11,11 @@
   </ng-container>
 
   <ng-container *ngIf="authService.isLogin()">
+    <div class="user-info" *ngIf="authService.isLogin()">
+      <div class="user-name">
+        {{ authService.currentUserSignal()?.user!.name }} {{ authService.currentUserSignal()?.user!.surname }}
+      </div>
+    </div>
     <a *ngIf="authService.currentUserSignal()?.roles!.includes('Admin')" routerLink="admin" (click)="toggleMenu()">Панель администратора</a>
     <a *ngIf="authService.currentUserSignal()?.roles!.includes('Dentist')" routerLink="dentist/appointments-list" (click)="toggleMenu()">Панель врача</a>
     <ng-container *ngIf="authService.currentUserSignal()?.roles!.includes('Patient')">
