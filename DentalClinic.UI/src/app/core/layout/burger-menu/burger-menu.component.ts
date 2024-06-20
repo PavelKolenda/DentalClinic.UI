@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, HostListener} from '@angular/core';
 import {AuthService} from "../../auth/services/auth.service";
 import {NgClass, NgIf} from "@angular/common";
 import {RouterLink} from "@angular/router";
@@ -25,5 +25,17 @@ export class BurgerMenuComponent {
 
   logout() {
     this.authService.logout();
+  }
+
+  @HostListener('document:click', ['$event'])
+  onClickedOutside(e: Event) {
+    if (!this.isOpen) return;
+    const target = e.target as HTMLElement;
+    const menuElement = document.querySelector('.side-menu');
+    const toggleButtonElement = document.querySelector('.burger-menu');
+
+    if (!menuElement?.contains(target) && !toggleButtonElement?.contains(target)) {
+      this.isOpen = false;
+    }
   }
 }
