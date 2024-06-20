@@ -73,6 +73,7 @@ export class CreateDentistComponent implements OnInit {
 
     this.dentistService.createDentist(dentist).subscribe({
       next: (response) => {
+        this.errorMessages = {};
         this.clearForm();
       }, error: (error: HttpErrorResponse) => {
         this.errorMessages = {};
