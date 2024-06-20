@@ -4,6 +4,7 @@
   align-items: center;
   padding: 2vh 4vw;
   background: #f0f9ff;
+  position: relative;
 }
 
 .logo-uz {
@@ -83,15 +84,11 @@
   }
 
   .auth-buttons {
-    flex-direction: column;
-    margin-top: 1vh;
+    display: none;
   }
 
-  .auth-button {
-    margin-left: 0;
-    margin-bottom: 1vh;
-    width: 30vw;
-    font-size: 4vw;
+  .user-info {
+    display: none;
   }
 
   .user-name {
