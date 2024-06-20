@@ -40,6 +40,9 @@
         <a routerLink="update">Изменить</a>
       </div>
     }
+    <div>
+      <button class="logout-button" (click)="logout()">Выйти</button>
+    </div>
     <div class="user-name">
       {{ authService.currentUserSignal()?.user!.name }} {{ authService.currentUserSignal()?.user!.surname }}
     </div>

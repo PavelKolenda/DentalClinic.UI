@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../../auth/services/auth.service";
 import {RouterLink} from "@angular/router";
 
-// @ts-ignore
 @Component({
   selector: 'app-layout-header',
   templateUrl: './header.component.html',
@@ -16,5 +15,9 @@ export class HeaderComponent{
 
   constructor(public authService: AuthService) {
 
+  }
+
+  logout(){
+    this.authService.logout();
   }
 }

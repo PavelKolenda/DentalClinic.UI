@@ -58,6 +58,14 @@
   align-items: center;
 }
 
+.logout-button{
+  background-color: #f09819;
+  margin-left: 2vw;
+  padding: 1vh 2vw;
+  border: none;
+  border-radius: 5px;
+}
+
 @media (max-width: 768px) {
   .header {
     flex-direction: column;
