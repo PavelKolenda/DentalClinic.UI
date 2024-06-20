@@ -1,0 +1,22 @@
+{
+  "routes": [
+    "/",
+    "/admin",
+    "/admin/dentist/create",
+    "/admin/dentists-list",
+    "/admin/news-list",
+    "/admin/news/create",
+    "/admin/patients-list",
+    "/admin/specializations-list",
+    "/admin/specializations/create",
+    "/admin/working-schedule-list",
+    "/admin/working-schedule/create",
+    "/appointment",
+    "/appointments",
+    "/dentist/appointments-list",
+    "/login",
+    "/notifications",
+    "/registration",
+    "/update"
+  ]
+}
