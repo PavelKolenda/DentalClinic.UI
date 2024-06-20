@@ -30,3 +30,15 @@ input {
 .red-color{
   color: red;
 }
+
+.registration-button {
+  width: 75%;
+  padding: 2%;
+  border: none;
+  border-radius: 12px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  align-self: center;
+  margin-bottom: 1em;
+}

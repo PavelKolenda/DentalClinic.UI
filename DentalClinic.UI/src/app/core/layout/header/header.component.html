@@ -30,6 +30,7 @@
   <div class="user-info" *ngIf="authService.isLogin()">
     <div *ngIf="authService.currentUserSignal()?.roles!.includes('Admin')">
       <a routerLink="admin" class="user-link">Панель администратора</a>
+      <a class="user-link" (click)="logout()">Выйти</a>
     </div>
     <div *ngIf="authService.currentUserSignal()?.roles!.includes('Dentist')">
       <a routerLink="dentist/appointments-list" class="user-link">Панель врача</a>

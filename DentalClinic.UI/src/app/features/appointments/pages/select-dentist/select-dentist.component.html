@@ -1,15 +1,15 @@
 <div>
   <h2>Заказ талона</h2>
   <span>Выбор врача</span>
-  @for(dentist of dentists; track dentist){
-    <div class="content">
+  <div class="content">
+    @for (dentist of dentists; track dentist) {
       <div class="block" (click)="selectDentist(dentist.id)">
         <div class="active"></div>
         <div class="block-content">
-          <h5>{{dentist.name}} {{dentist.surname}} {{dentist.patronymic !== "" ? dentist.patronymic : ""}}</h5>
-          <span>{{dentist.specialization}}, к.{{dentist.cabinetNumber}}</span>
+          <h5>{{ dentist.name }} {{ dentist.surname }} {{ dentist.patronymic !== "" ? dentist.patronymic : "" }}</h5>
+          <span>{{ dentist.specialization }}, к.{{ dentist.cabinetNumber }}</span>
         </div>
       </div>
-    </div>
-  }
+    }
+  </div>
 </div>
