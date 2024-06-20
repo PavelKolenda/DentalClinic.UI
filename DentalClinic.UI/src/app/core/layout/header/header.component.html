@@ -1,47 +1,60 @@
 <div class="header block-light-blue">
-  <div>
-    <div class="logo-uz">учреждения здравоохранения</div>
-    <div class="logo-name-container">
-      <div class="logo-name">
-        Центральная городская
-        <br>
-        стоматологическая поликлиника
+  <div class="content">
+    <div>
+      <div class="logo-uz">учреждения здравоохранения</div>
+      <div class="logo-name-container">
+        <div class="logo-name">
+          Центральная городская
+          <br>
+          стоматологическая поликлиника
+        </div>
+        города Гродно
       </div>
-      города Гродно
+    </div>
+    <div class="burger-menu-wrapper">
+      <app-burger-menu></app-burger-menu>
     </div>
   </div>
 
-  @if (!this.authService.isLogin()) {
-    <div>
-      <button class="auth-button" routerLink="/login">Войти</button>
-      <button class="auth-button" routerLink="/registration">Регистрация</button>
+  @if(!authService.isLogin()){
+    <div class="appointment-link">
+      <a routerLink="appointment" class="user-link">Запись</a>
     </div>
   }
 
+  <div class="auth-buttons" *ngIf="!authService.isLogin()">
+    <button class="auth-button" routerLink="/login">Войти</button>
+    <button class="auth-button" routerLink="/registration">Регистрация</button>
+  </div>
 
-  @if (this.authService.isLogin()) {
-    @if (this.authService.currentUserSignal()?.roles!.includes('Admin')) {
-      <div><a routerLink="admin" class="user-link">Панель администратора</a></div>
-    }
-    @if (this.authService.currentUserSignal()?.roles!.includes('Dentist')) {
-      <div><a routerLink="dentist/appointments-list" class="user-link">Панель врача</a></div>
-    }
-    @if(this.authService.currentUserSignal()?.roles!.includes('Patient')){
+  <div class="user-info" *ngIf="authService.isLogin()">
+    <div *ngIf="authService.currentUserSignal()?.roles!.includes('Admin')">
+      <a routerLink="admin" class="user-link">Панель администратора</a>
+    </div>
+    <div *ngIf="authService.currentUserSignal()?.roles!.includes('Dentist')">
+      <a routerLink="dentist/appointments-list" class="user-link">Панель врача</a>
+    </div>
+    <ng-container *ngIf="authService.currentUserSignal()?.roles!.includes('Patient')">
       <div>
-        <a routerLink="appointment">Запись</a>
+        <a routerLink="appointment" class="user-link">Запись</a>
       </div>
       <div>
-        <a routerLink="appointments">Записи</a>
+        <a routerLink="appointments" class="user-link">Записи</a>
       </div>
       <div>
-        <a routerLink="notifications">Уведомления</a>
+        <a routerLink="notifications" class="user-link">Уведомления</a>
       </div>
       <div>
-        <a routerLink="update">Изменить</a>
+        <a routerLink="update" class="user-link">Изменить</a>
       </div>
-    }
+      <div>
+        <a class="user-link" (click)="logout()">Выйти</a>
+      </div>
+    </ng-container>
     <div class="user-name">
       {{ authService.currentUserSignal()?.user!.name }} {{ authService.currentUserSignal()?.user!.surname }}
     </div>
-  }
+  </div>
+
+
 </div>

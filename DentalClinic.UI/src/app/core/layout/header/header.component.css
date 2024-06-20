@@ -3,7 +3,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 2vh 4vw;
-  background: #f0f9ff;
+  background: #d1f6ff;
+  position: relative;
 }
 
 .logo-uz {
@@ -27,7 +28,7 @@
   text-transform: uppercase;
 }
 
-.auth-buttons {
+.auth-buttons .appointment-link{
   display: flex;
 }
 
@@ -65,25 +66,54 @@
     padding: 1vh 3vw;
   }
 
+  .burger-menu-wrapper{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .content{
+    width: 100%;
+    display: flex;
+  }
+
   .logo-uz {
-    font-size: 1vw;
-    margin-bottom: 1vh;
+    font-size: 2vw;
+    line-height: calc(0.7vh + 8px);
+    text-transform: uppercase;
+    font-weight: normal;
+    margin-right: 2vw;
+  }
+
+  .burger-menu{
+    display: flex;
+    flex-direction: row;
+  }
+
+  .logo-name-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    font-size: 2vw;
   }
 
   .logo-name {
-    font-size: 1.8vw;
+    font-size: 2.3vw;
+    line-height: 1.2;
   }
 
   .auth-buttons {
-    flex-direction: column;
-    margin-top: 1vh;
+    display: none;
   }
 
-  .auth-button {
-    margin-left: 0;
-    margin-bottom: 1vh;
-    width: 30vw;
-    font-size: 4vw;
+  .appointment-link{
+    display: none;
+  }
+
+  .user-info {
+    display: none;
   }
 
   .user-name {

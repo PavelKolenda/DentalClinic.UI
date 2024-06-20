@@ -5,6 +5,7 @@ import {AuthResponse} from "../models/AuthResponse";
 import {JwtService} from "./jwt.service";
 import {jwtDecode, JwtPayload} from "jwt-decode";
 import {environments} from "../../../../environments/environments.development";
+import {Router} from "@angular/router";
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -17,7 +18,7 @@ const httpOptions = {
 export class AuthService {
   currentUserSignal = signal<AuthResponse | undefined | null>(undefined);
 
-  constructor(private readonly http: HttpClient, private jwtService: JwtService) {
+  constructor(private readonly http: HttpClient, private jwtService: JwtService, private router: Router) {
     this.getInitialUserState();
   }
 
@@ -97,6 +98,7 @@ export class AuthService {
 
   public logout(): void {
     this.jwtService.destroyToken();
+    this.router.navigateByUrl('');
     this.currentUserSignal.set(null);
   }
 

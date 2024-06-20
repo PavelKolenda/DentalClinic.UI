@@ -6,16 +6,20 @@ import {SortService} from "../../../shared/services/sort.service";
 import {NewsService} from "../news.service";
 import {DatePipe} from "@angular/common";
 import {TruncatePipe} from "../../../shared/truncate.pipe";
+import {FormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-news-list',
   standalone: true,
   imports: [
     DatePipe,
-    TruncatePipe
+    TruncatePipe,
+    FormsModule
   ],
   templateUrl: './news-list.component.html',
-  styleUrl: './news-list.component.css'
+  styleUrls: [
+    './news-list.component.css',
+  ]
 })
 export class NewsListComponent extends ListComponent<NewsModel>  {
   constructor(private newsService: NewsService, protected router: Router, sortService: SortService) {
