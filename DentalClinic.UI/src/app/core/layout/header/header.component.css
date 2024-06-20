@@ -79,8 +79,11 @@
   }
 
   .logo-uz {
-    font-size: 2.3vw;
-    margin-bottom: 1vh;
+    font-size: 2vw;
+    line-height: calc(0.7vh + 8px);
+    text-transform: uppercase;
+    font-weight: normal;
+    margin-right: 2vw;
   }
 
   .burger-menu{
@@ -93,6 +96,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    font-size: 2vw;
   }
 
   .logo-name {
