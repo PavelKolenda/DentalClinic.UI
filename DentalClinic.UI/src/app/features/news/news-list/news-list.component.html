@@ -11,10 +11,12 @@
       </div>
     }
   </div>
-  <div class="pagination-wrapper">
-    <div class="pagination">
-      <button class="page-button" (click)="previousPage()" [disabled]="!items?.hasPreviousPage">Назад</button>
-      <button class="page-button" (click)="nextPage()" [disabled]="!items?.hasNextPage">Вперед</button>
+  @if(items!.totalCount > 0){
+    <div class="pagination-wrapper">
+      <div class="pagination">
+        <button class="page-button" (click)="previousPage()" [disabled]="!items?.hasPreviousPage">Назад</button>
+        <button class="page-button" (click)="nextPage()" [disabled]="!items?.hasNextPage">Вперед</button>
+      </div>
     </div>
-  </div>
+  }
 </div>
