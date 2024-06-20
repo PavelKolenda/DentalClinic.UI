@@ -28,7 +28,7 @@
   text-transform: uppercase;
 }
 
-.auth-buttons {
+.auth-buttons .appointment-link{
   display: flex;
 }
 
@@ -66,9 +66,26 @@
     padding: 1vh 3vw;
   }
 
+  .burger-menu-wrapper{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .content{
+    width: 100%;
+    display: flex;
+  }
+
   .logo-uz {
     font-size: 2.3vw;
     margin-bottom: 1vh;
+  }
+
+  .burger-menu{
+    display: flex;
+    flex-direction: row;
   }
 
   .logo-name-container {
@@ -84,6 +101,10 @@
   }
 
   .auth-buttons {
+    display: none;
+  }
+
+  .appointment-link{
     display: none;
   }
 

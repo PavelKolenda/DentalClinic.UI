@@ -1,15 +1,26 @@
 <div class="header block-light-blue">
-  <div>
-    <div class="logo-uz">учреждения здравоохранения</div>
-    <div class="logo-name-container">
-      <div class="logo-name">
-        Центральная городская
-        <br>
-        стоматологическая поликлиника
+  <div class="content">
+    <div>
+      <div class="logo-uz">учреждения здравоохранения</div>
+      <div class="logo-name-container">
+        <div class="logo-name">
+          Центральная городская
+          <br>
+          стоматологическая поликлиника
+        </div>
+        города Гродно
       </div>
-      города Гродно
+    </div>
+    <div class="burger-menu-wrapper">
+      <app-burger-menu></app-burger-menu>
     </div>
   </div>
+
+  @if(!authService.isLogin()){
+    <div class="appointment-link">
+      <a routerLink="appointment" class="user-link">Запись</a>
+    </div>
+  }
 
   <div class="auth-buttons" *ngIf="!authService.isLogin()">
     <button class="auth-button" routerLink="/login">Войти</button>
@@ -45,5 +56,5 @@
     </div>
   </div>
 
-  <app-burger-menu></app-burger-menu>
+
 </div>
