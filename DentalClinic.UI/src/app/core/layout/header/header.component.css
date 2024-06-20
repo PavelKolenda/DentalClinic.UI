@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 2vh 4vw;
-  background: #f0f9ff;
+  background: #d1f6ff;
   position: relative;
 }
 
@@ -67,12 +67,20 @@
   }
 
   .logo-uz {
-    font-size: 1vw;
+    font-size: 2.3vw;
     margin-bottom: 1vh;
   }
 
+  .logo-name-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
   .logo-name {
-    font-size: 1.8vw;
+    font-size: 2.3vw;
+    line-height: 1.2;
   }
 
   .auth-buttons {
