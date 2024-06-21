@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../../auth/services/auth.service";
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {BurgerMenuComponent} from "../burger-menu/burger-menu.component";
 import {NgIf} from "@angular/common";
 
@@ -17,9 +17,7 @@ import {NgIf} from "@angular/common";
 })
 export class HeaderComponent{
 
-  constructor(public authService: AuthService) {
-
-  }
+  constructor(public authService: AuthService, protected router: Router) {}
 
   logout(){
     this.authService.logout();
