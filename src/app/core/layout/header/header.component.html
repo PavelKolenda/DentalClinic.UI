@@ -10,6 +10,9 @@
         </div>
         города Гродно
       </div>
+      <div>
+        <small>Номер регистратуры: +375 15 244-21-81</small>
+      </div>
     </div>
     <div class="burger-menu-wrapper">
       <app-burger-menu></app-burger-menu>
@@ -34,6 +37,7 @@
     </div>
     <div *ngIf="authService.currentUserSignal()?.roles!.includes('Dentist')">
       <a routerLink="dentist/appointments-list" class="user-link">Панель врача</a>
+      <a class="user-link" (click)="logout()">Выйти</a>
     </div>
     <ng-container *ngIf="authService.currentUserSignal()?.roles!.includes('Patient')">
       <div>
