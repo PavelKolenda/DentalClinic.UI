@@ -96,6 +96,7 @@ export const routes: Routes = [
   {
     path: 'dentist/:dentistId/:patientId/patient-reenrollment',
     component: PatientReenrollmentComponent,
+    canActivate: [isLoggedGuard, isDentistGuard]
   },
   {
     path: 'admin',

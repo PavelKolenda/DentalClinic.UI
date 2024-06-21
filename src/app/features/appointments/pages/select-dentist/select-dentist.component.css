@@ -10,12 +10,12 @@
   line-height: 1;
   display: flex;
   text-align: center;
+  border: 1px solid black;
+  align-items: center;
+  justify-content: center;
 }
 
-.block-content{
-}
-
-.block:hover {
+.block:hover{
   cursor: pointer;
 }
 

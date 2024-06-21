@@ -7,7 +7,7 @@
         <input formControlName="email" id="email" type="text">
       </div>
       @if (!userRegistrationForm.controls.email.valid && userRegistrationForm.controls.email.touched) {
-        <small style="color: red;">Поля обязательно для заполнения</small>
+        <small style="color: red;">Поле обязательно для заполнения</small>
       }
       @if (errorMessages['Email']) {
         <small class="red-color">{{ errorMessages['Email'] }}</small>
@@ -19,22 +19,10 @@
         <input formControlName="password" id="password" type="password">
       </div>
       @if (!userRegistrationForm.controls.password.valid && userRegistrationForm.controls.password.touched) {
-        <small style="color: red;">Поля обязательно для заполнения</small>
+        <small style="color: red;">Минимальная длина пароля 8 символов</small>
       }
       @if (errorMessages['Password']) {
         <small class="red-color">{{ errorMessages['Password'] }}</small>
-      }
-    </div>
-    <div>
-      <label for="name"><span class="red-color">*</span>Имя:</label>
-      <div>
-        <input formControlName="name" id="name" type="text">
-      </div>
-      @if (!userRegistrationForm.controls.name.valid && userRegistrationForm.controls.name.touched) {
-        <small style="color: red;">Поля обязательно для заполнения</small>
-      }
-      @if (errorMessages['Name']) {
-        <small class="red-color">{{ errorMessages['Name'] }}</small>
       }
     </div>
     <div>
@@ -43,10 +31,22 @@
         <input formControlName="surname" id="surname" type="text">
       </div>
       @if (!userRegistrationForm.controls.surname.valid && userRegistrationForm.controls.surname.touched) {
-        <small style="color: red;">Поля обязательно для заполнения</small>
+        <small style="color: red;">Поле обязательно для заполнения</small>
       }
       @if (errorMessages['Surname']) {
         <small class="red-color">{{ errorMessages['Surname'] }} </small>
+      }
+    </div>
+    <div>
+      <label for="name"><span class="red-color">*</span>Имя:</label>
+      <div>
+        <input formControlName="name" id="name" type="text">
+      </div>
+      @if (!userRegistrationForm.controls.name.valid && userRegistrationForm.controls.name.touched) {
+        <small style="color: red;">Поле обязательно для заполнения</small>
+      }
+      @if (errorMessages['Name']) {
+        <small class="red-color">{{ errorMessages['Name'] }}</small>
       }
     </div>
     <div>
@@ -61,7 +61,7 @@
         <input [max]="today" formControlName="birthDate" id="birthDate" type="date">
       </div>
       @if (!userRegistrationForm.controls.birthDate.valid && userRegistrationForm.controls.birthDate.touched) {
-        <small style="color: red;">Поля обязательно для заполнения</small>
+        <small style="color: red;">Поле обязательно для заполнения</small>
       }
       @if (errorMessages['BirthDate']) {
         <small class="red-color">{{ errorMessages['BirthDate'] }}</small>
@@ -73,7 +73,7 @@
         <input formControlName="phoneNumber" id="phoneNumber" mask="(00)000-00-00" prefix="+375" type='text'>
       </div>
       @if (!userRegistrationForm.controls.phoneNumber.valid && userRegistrationForm.controls.phoneNumber.touched) {
-        <small style="color: red;">Поля обязательно для заполнения</small>
+        <small style="color: red;">Поле обязательно для заполнения</small>
       }
       @if (errorMessages['PhoneNumber']) {
         <small class="red-color">{{ errorMessages['PhoneNumber'] }}</small>
@@ -85,7 +85,7 @@
         <input formControlName="address" id="address" type="text">
       </div>
       @if (!userRegistrationForm.controls.address.valid && userRegistrationForm.controls.address.touched) {
-        <small style="color: red;">Поля обязательно для заполнения</small>
+        <small style="color: red;">Поле обязательно для заполнения</small>
       }
       @if (errorMessages['Address']) {
         <small class="red-color">{{ errorMessages['Address'] }}</small>
