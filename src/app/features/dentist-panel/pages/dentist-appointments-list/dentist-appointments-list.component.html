@@ -9,7 +9,7 @@
           <h5>{{appointment.appointmentTime | dateToHHmm}}</h5>
         </div>
         <div class="patient">
-          <h5>{{appointment.patientName}} {{appointment.patientSurname}} {{appointment.patientPatronymic}}</h5>
+          <h5>{{appointment.patientSurname}} {{appointment.patientName}} {{appointment.patientPatronymic}}</h5>
         </div>
         <div>
           <button class="reenrollment-button" (click)="patientReenrolment(appointment.patientId)">Повторная запись</button>

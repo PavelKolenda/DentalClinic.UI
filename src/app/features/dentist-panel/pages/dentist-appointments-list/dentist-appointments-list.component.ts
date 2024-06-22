@@ -43,7 +43,6 @@ export class DentistAppointmentsListComponent implements OnInit{
     this.dentistsService.getAppointmentsList(this.pagedRequest, formattedDate)
       .subscribe((response) => {
       this.appointmentsDetails = response;
-      console.log(this.appointmentsDetails);
     })
   }
 
