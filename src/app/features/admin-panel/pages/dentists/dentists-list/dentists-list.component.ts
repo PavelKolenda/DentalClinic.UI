@@ -32,7 +32,7 @@ export class DentistsListComponent extends ListComponent<Dentist>  {
   }
 
   public deleteDentist(id: number){
-    if (window.confirm('Вы уверены что хотите удалить?')) {
+    if (window.confirm('Подтвердите удаление')) {
       this.adminService.deleteDentist(id).subscribe((response) => {
         this.getItems();
       }, (error) => {
