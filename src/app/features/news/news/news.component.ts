@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AppointmentService} from "../../appointments/services/appointment.service";
-import {ActivatedRoute, Router} from "@angular/router";
-import {AuthService} from "../../../core/auth/services/auth.service";
+import {ActivatedRoute} from "@angular/router";
 import {NewsModel} from "../models/news.model";
 import {NewsService} from "../news.service";
 import {DatePipe} from "@angular/common";
