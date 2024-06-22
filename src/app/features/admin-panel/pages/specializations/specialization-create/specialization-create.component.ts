@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {SpecializationsService} from "../../../services/specializations.service";
-import {ActivatedRoute} from "@angular/router";
 import {SpecializationCreateModel} from "../../../models/specializations/specialization-create.model";
 
 @Component({
@@ -17,8 +16,7 @@ import {SpecializationCreateModel} from "../../../models/specializations/special
 export class SpecializationCreateComponent {
 
   constructor(private fb: FormBuilder,
-              private specializationsService: SpecializationsService,
-              private route: ActivatedRoute) {
+              private specializationsService: SpecializationsService) {
   }
 
   specializationForm = this.fb.group({

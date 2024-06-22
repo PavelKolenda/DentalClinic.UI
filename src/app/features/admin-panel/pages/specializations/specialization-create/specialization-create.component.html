@@ -4,6 +4,11 @@
     <div class="form-group">
       <label for="name">Название</label>
       <input type="text" id="name" class="form-control" formControlName="name">
+      @if(!specializationForm.controls.name.valid && specializationForm.controls.name.touched){
+        <div>
+          <small style="color:red">Поле обязательно для заполенения.<br/> Минимальная длина 4 символа</small>
+        </div>
+      }
     </div>
     <button type="submit" class="btn btn-primary" [disabled]="!specializationForm.valid">Добавить</button>
   </form>

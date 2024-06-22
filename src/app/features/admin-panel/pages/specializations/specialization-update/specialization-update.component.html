@@ -1,10 +1,15 @@
 <div class="container mt-5">
-  <h2 class="mb-3">Обновление специализации</h2>
+  <h2 class="mb-3">Изменение специализации</h2>
   <form [formGroup]="specializationForm" (ngSubmit)="update()">
     <div class="form-group">
       <label for="name">Название</label>
       <input type="text" id="name" class="form-control" formControlName="name">
+      @if(!specializationForm.controls.name.valid && specializationForm.controls.name.touched){
+        <div>
+          <small style="color:red">Поле обязательно для заполенения.<br/> Минимальная длина 4 символа</small>
+        </div>
+      }
     </div>
-    <button type="submit" class="btn btn-primary" [disabled]="!specializationForm.valid">Обновить</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!specializationForm.valid">Изменить</button>
   </form>
 </div>

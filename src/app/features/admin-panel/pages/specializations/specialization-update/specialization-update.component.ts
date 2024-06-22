@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {SpecializationsService} from "../../../services/specializations.service";
 import {ActivatedRoute} from "@angular/router";
-import {Specialization} from "../../../../appointments/models/specialization";
 import {FormBuilder, ReactiveFormsModule, Validators} from "@angular/forms";
 import {SpecializationUpdateModel} from "../../../models/specializations/specialization-update.model";
 
