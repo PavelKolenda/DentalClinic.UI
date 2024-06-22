@@ -17,11 +17,11 @@
     <div class="appointment-details">
       <p>
         Дата приема
-        {{ appointmentDetails?.appointmentDate }}
+        {{ appointmentDetails?.appointmentDate | date:'dd.MM.yyyy' }}
       </p>
       <p>
         Время приема
-        {{ appointmentDetails?.appointmentTime }}
+        {{ appointmentDetails?.appointmentTime | slice:0:5 }}
       </p>
     </div>
     <div class="patient-details">

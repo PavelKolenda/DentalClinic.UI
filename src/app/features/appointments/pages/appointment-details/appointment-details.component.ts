@@ -1,16 +1,20 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AppointmentService} from "../../services/appointment.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AppointmentDetails} from "../../models/appointment-details";
+import {DatePipe, SlicePipe} from "@angular/common";
 
 @Component({
   selector: 'app-appointment-details',
   standalone: true,
-  imports: [],
+  imports: [
+    DatePipe,
+    SlicePipe
+  ],
   templateUrl: './appointment-details.component.html',
   styleUrl: './appointment-details.component.css'
 })
-export class AppointmentDetailsComponent {
+export class AppointmentDetailsComponent implements OnInit{
   appointmentId: number = 0;
   appointmentDetails: AppointmentDetails | null = null;
 
