@@ -11,7 +11,7 @@
       </div>
     }
   </div>
-  @if(items!.totalCount > 0){
+  @if(items){
     <div class="pagination-wrapper">
       <div class="pagination">
         <button class="page-button" (click)="previousPage()" [disabled]="!items?.hasPreviousPage">Назад</button>
