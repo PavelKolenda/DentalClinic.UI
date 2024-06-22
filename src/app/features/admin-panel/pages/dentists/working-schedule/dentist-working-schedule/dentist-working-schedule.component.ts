@@ -49,12 +49,11 @@ export class DentistWorkingScheduleComponent implements OnInit{
   }
 
   public deleteDentistWorkingSchedule(scheduleId: number) {
-    if(this.dentistId != 0){
-      console.log(1);
-      this.dentistWorkingScheduleService.deleteDentistWorkingSchedule(this.dentistId, scheduleId)
-        .subscribe((response) => {
-          this.loadDentistWorkingSchedule(this.dentistId);
-      });
+    if (window.confirm('Подтвердите удаление') && this.dentistId != 0) {
+        this.dentistWorkingScheduleService.deleteDentistWorkingSchedule(this.dentistId, scheduleId)
+          .subscribe((response) => {
+            this.loadDentistWorkingSchedule(this.dentistId);
+        });
     }
   }
 
