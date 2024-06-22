@@ -6,10 +6,12 @@
 
 <div class="side-menu" [ngClass]="{'open': isOpen}">
   <ng-container *ngIf="!authService.isLogin()">
+    <a routerLink="" class="user-link" (click)="toggleMenu()">Главная</a>
     <a routerLink="/appointment" class="user-link" (click)="toggleMenu()">Запись</a>
     <a routerLink="/login" (click)="toggleMenu()">Войти</a>
     <a routerLink="/registration" (click)="toggleMenu()">Регистрация</a>
   </ng-container>
+
 
   <ng-container *ngIf="authService.isLogin()">
     <div class="user-info" *ngIf="authService.isLogin()">
@@ -17,6 +19,7 @@
         {{ authService.currentUserSignal()?.user!.name }} {{ authService.currentUserSignal()?.user!.surname }}
       </div>
     </div>
+    <a routerLink="" class="user-link" (click)="toggleMenu()">Главная</a>
     <a *ngIf="authService.currentUserSignal()?.roles!.includes('Admin')" routerLink="admin" (click)="toggleMenu()">Панель администратора</a>
     <a *ngIf="authService.currentUserSignal()?.roles!.includes('Dentist')" routerLink="dentist/appointments-list" (click)="toggleMenu()">Панель врача</a>
     <ng-container *ngIf="authService.currentUserSignal()?.roles!.includes('Patient')">
