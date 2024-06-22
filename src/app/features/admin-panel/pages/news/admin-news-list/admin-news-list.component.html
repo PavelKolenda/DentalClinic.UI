@@ -16,7 +16,7 @@
           <td>{{news.title}}</td>
           <td>{{news.createdAt | date:'dd.MM.yyyy HH:mm' }}</td>
           <td>
-            <button class="update-button" (click)="router.navigateByUrl('/admin/news/'+news.id+'/update')">Обновить</button>
+            <button class="update-button" (click)="router.navigateByUrl('/admin/news/'+news.id+'/update')">Изменить</button>
             <button class="delete-button" (click)="delete(news.id)">Удалить</button>
           </td>
         </tr>

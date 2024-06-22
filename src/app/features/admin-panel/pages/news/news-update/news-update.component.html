@@ -1,5 +1,5 @@
 <div class="news-create-container">
-  <h2>Обновление новости</h2>
+  <h2>Изменение новости</h2>
   <form [formGroup]="newsUpdateForm" (ngSubmit)="update()">
     <div class="form-field">
       <label for="title">Заголовок</label>
@@ -35,6 +35,6 @@
         </div>
       }
     </div>
-    <button type="submit" [disabled]="!newsUpdateForm.valid">Обновить</button>
+    <button type="submit" [disabled]="!newsUpdateForm.valid">Изменить</button>
   </form>
 </div>
