@@ -1,15 +1,7 @@
 <div class="create-form-container">
+  <h3>Изменение врача</h3>
   <form class="create-form" [formGroup]="dentistUpdateForm">
     <div class="nsp">
-      <div class="name">
-        <label for="name"><span class="red-color">*</span>Имя:</label>
-        <div>
-          <input type="text" id="name" formControlName="name">
-        </div>
-        @if(!dentistUpdateForm.controls.name.valid && dentistUpdateForm.controls.name.touched){
-          <small style="color: red;">Поля обязательно для заполнения</small>
-        }
-      </div>
       <div class="surname">
         <div>
           <label for="surname"><span class="red-color">*</span>Фамилия:</label>
@@ -17,9 +9,18 @@
             <input type="text" id="surname" formControlName="surname">
           </div>
           @if(!dentistUpdateForm.controls.surname.valid && dentistUpdateForm.controls.surname.touched){
-            <small style="color: red;">Поля обязательно для заполнения</small>
+            <small style="color: red;">Поле обязательно для заполнения</small>
           }
         </div>
+      </div>
+      <div class="name">
+        <label for="name"><span class="red-color">*</span>Имя:</label>
+        <div>
+          <input type="text" id="name" formControlName="name">
+        </div>
+        @if(!dentistUpdateForm.controls.name.valid && dentistUpdateForm.controls.name.touched){
+          <small style="color: red;">Поле обязательно для заполнения</small>
+        }
       </div>
       <div>
         <label for="patronymic">Отчество:</label>
@@ -37,6 +38,11 @@
               <option [value]="specialization.name">{{specialization.name}}</option>
             }
           </select>
+        @if(!dentistUpdateForm.controls.specialization.valid && dentistUpdateForm.controls.specialization.touched){
+          <div>
+            <small style="color: red;">Выберите специализацию</small>
+          </div>
+        }
       </div>
       <div>
         <label for="cabinetNumber">Номер кабинета: </label>
@@ -57,7 +63,7 @@
           <input type="text" id="email" formControlName="email">
         </div>
         @if(!dentistUpdateForm.controls.email.valid && dentistUpdateForm.controls.email.touched){
-          <small style="color: red;">Поля обязательно для заполнения</small>
+          <small style="color: red;">Поле обязательно для заполнения</small>
         }
         @if (errorMessages['EmailExists']) {
           <small class="red-color">{{ errorMessages['EmailExists'] }}</small>
@@ -69,7 +75,7 @@
           <input type="password" id="password" formControlName="password">
         </div>
         @if(!dentistUpdateForm.controls.password.valid && dentistUpdateForm.controls.password.touched){
-          <small style="color: red;">Поля обязательно для заполнения</small>
+          <small style="color: red;">Поле обязательно для заполнения</small>
         }
       </div>
     </div>
@@ -79,7 +85,7 @@
         <input type="date" id="birthDate" formControlName="birthDate">
       </div>
       @if(!dentistUpdateForm.controls.birthDate.valid && dentistUpdateForm.controls.birthDate.touched){
-        <small style="color: red;">Поля обязательно для заполнения</small>
+        <small style="color: red;">Поле обязательно для заполнения</small>
       }
       @if(errorMessages['BirthDate']){
         <small class="red-color">{{ errorMessages['BirthDate'] }}</small>
@@ -93,7 +99,7 @@
           <input formControlName="phoneNumber" id="phoneNumber" mask="(00)000-00-00" prefix="+375" type='text'>
         </div>
         @if(!dentistUpdateForm.controls.phoneNumber.valid && dentistUpdateForm.controls.phoneNumber.touched){
-          <small style="color: red;">Поля обязательно для заполнения</small>
+          <small style="color: red;">Поле обязательно для заполнения</small>
         }
       </div>
       <div>
@@ -102,10 +108,10 @@
           <input formControlName="address" id="address" type="text">
         </div>
         @if (!dentistUpdateForm.controls.address.valid && dentistUpdateForm.controls.address.touched) {
-          <small style="color: red;">Поля обязательно для заполнения</small>
+          <small style="color: red;">Поле обязательно для заполнения</small>
         }
       </div>
     </div>
-    <button type="submit" class="registration-button" (click)="update()">Обновить</button>
+    <button type="submit" class="registration-button" (click)="update()">Изменить</button>
   </form>
 </div>

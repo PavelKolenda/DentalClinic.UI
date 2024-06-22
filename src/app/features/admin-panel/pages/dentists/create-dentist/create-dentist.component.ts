@@ -27,7 +27,7 @@ export class CreateDentistComponent implements OnInit {
     patronymic: new FormControl(''),
     birthDate: new FormControl('', [Validators.required]),
     cabinetNumber: new FormControl('', [Validators.required, Validators.min(1), Validators.max(26)]),
-    specialization: new FormControl(''),
+    specialization: new FormControl('', [Validators.required]),
     address: new FormControl('', [Validators.required]),
     phoneNumber: new FormControl('', [Validators.required])
   });

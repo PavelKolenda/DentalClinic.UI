@@ -22,7 +22,7 @@
         <td>{{dentist.cabinetNumber}}</td>
         <td>{{dentist.specialization}}</td>
         <td>
-          <button class="update-button" (click)="router.navigateByUrl('/admin/dentist/'+dentist.id+'/update')">Обновить</button>
+          <button class="update-button" (click)="router.navigateByUrl('/admin/dentist/'+dentist.id+'/update')">Изменить</button>
           <button class="delete-button" (click)="deleteDentist(dentist.id)">Удалить</button>
           <button (click)="router.navigateByUrl('/admin/dentist/'+dentist.id+'/working-schedule')" class="schedule-button">Расписание</button>
         </td>
