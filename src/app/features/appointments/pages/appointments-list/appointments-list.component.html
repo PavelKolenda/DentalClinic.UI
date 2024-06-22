@@ -10,7 +10,8 @@
             <h5>{{appointment.dentistSpecialization}}</h5>
           </div>
           <div class="dateTime">
-            <h5>{{appointment.appointmentDate}} {{appointment.appointmentTime}}</h5>
+            <h5>{{appointment.appointmentDate | date:'dd.MM.yyyy'}}
+                {{appointment.appointmentTime | slice:0:5}}</h5>
           </div>
         </div>
       }

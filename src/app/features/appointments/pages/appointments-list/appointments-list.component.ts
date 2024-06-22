@@ -4,11 +4,15 @@ import {AppointmentDetails} from "../../models/appointment-details";
 import {PagedResponse} from "../../../../shared/models/paged-response";
 import {Router} from "@angular/router";
 import {PagedRequest} from "../../../../shared/models/paged-request";
+import {DatePipe, SlicePipe} from "@angular/common";
 
 @Component({
   selector: 'app-appointments-list',
   standalone: true,
-  imports: [],
+  imports: [
+    DatePipe,
+    SlicePipe
+  ],
   templateUrl: './appointments-list.component.html',
   styleUrl: './appointments-list.component.css'
 })
