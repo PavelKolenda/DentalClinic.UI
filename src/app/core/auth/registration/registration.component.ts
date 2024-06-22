@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router, RouterLink} from "@angular/router";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {AuthService} from "../services/auth.service";
@@ -13,7 +13,7 @@ import {RegistrationUserFriendlyErrorMessages} from "../errors/RegistrationUserF
   imports: [RouterLink, ReactiveFormsModule, NgxMaskDirective,],
   standalone: true,
 })
-export class RegistrationComponent {
+export class RegistrationComponent implements OnInit{
   today = new Date().toISOString().split('T')[0];
 
   public errorMessages: { [key: string]: string } = {};
@@ -41,6 +41,12 @@ export class RegistrationComponent {
   };
 
   constructor(private authService: AuthService, private router: Router) {
+  }
+
+  ngOnInit(): void {
+    if(this.authService.isLogin()){
+      this.router.navigateByUrl('');
+    }
   }
 
   submitForm() {

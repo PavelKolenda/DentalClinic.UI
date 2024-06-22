@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {Router, RouterLink} from "@angular/router";
 import {AuthService} from "../services/auth.service";
@@ -15,9 +15,15 @@ import {LoginUserFriendlyErrorMessages} from "../errors/LoginUserFriendlyErrorMe
   templateUrl: './login.component.html',
   styleUrl: '../registration/registration.component.css'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
 
   constructor(private authService: AuthService, private router: Router) {
+  }
+
+  ngOnInit(): void {
+    if(this.authService.isLogin()){
+      this.router.navigateByUrl('');
+    }
   }
 
   public errorMessages: { [key: string]: string } = {};
