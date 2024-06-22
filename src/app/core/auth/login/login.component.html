@@ -7,7 +7,9 @@
         <input type="text" id="email" formControlName="email">
       </div>
       @if (!userLoginForm.controls.email.valid && userLoginForm.controls.email.touched) {
-        <small style="color: red;">Поля обязательно для заполнения</small>
+        <div>
+          <small style="color: red;">Поле обязательно для заполнения</small>
+        </div>
       }
     </div>
     <div>
@@ -16,10 +18,12 @@
         <input type="password" id="password" formControlName="password">
       </div>
       @if (!userLoginForm.controls.password.valid && userLoginForm.controls.password.touched) {
-        <small style="color: red;">Поля обязательно для заполнения</small>
+        <small style="color: red;">Минимальная длина пароля 8 символов</small>
       }
       @if (errorMessages['CredentialsDontExists']) {
-        <small class="red-color">{{ errorMessages['CredentialsDontExists'] }}</small>
+        <div>
+          <small class="red-color">{{ errorMessages['CredentialsDontExists'] }}</small>
+        </div>
       }
     </div>
     <small class="have-account-link"><a routerLink="/registration">Нет аккаунта?</a></small>
