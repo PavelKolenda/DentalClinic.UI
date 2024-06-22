@@ -15,14 +15,17 @@ import {HttpErrorResponse} from "@angular/common/http";
 })
 export class WorkingScheduleCreateComponent {
   workingScheduleCreateForm = this.fb.group({
-    start: ['', [Validators.required]], end: ['', [Validators.required]], workingDay: ['', [Validators.required]],
+    start: ['', [Validators.required]],
+    end: ['', [Validators.required]],
+    workingDay: ['', [Validators.required]],
   });
   public errorMessages: { [key: string]: string } = {};
   private userFriendlyMessages: CreateWorkingScheduleErrorMessages = {
-    End: 'Конец рабочего дня должен быть больше начала', Start: 'Начало рабочего дня должно меньше конца',
+    End: 'Конец рабочего дня должен быть больше начала',
+    Start: 'Начало рабочего дня должно меньше конца',
   };
 
-  constructor(private fb: FormBuilder, private workingScheduleService: AdminWorkingScheduleService, private route: ActivatedRoute) {
+  constructor(private fb: FormBuilder, private workingScheduleService: AdminWorkingScheduleService) {
   }
 
   public create() {

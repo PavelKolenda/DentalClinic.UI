@@ -18,7 +18,7 @@
           <td>{{workingSchedule.end}}</td>
           <td>{{workingSchedule.workingDay}}</td>
           <td>
-            <button class="update-button" (click)="this.router.navigateByUrl('/admin/working-schedule/'+workingSchedule.id+'/update')">Обновить</button>
+            <button class="update-button" (click)="this.router.navigateByUrl('/admin/working-schedule/'+workingSchedule.id+'/update')">Изменить</button>
             <button class="delete-button" (click)="deleteWorkingSchedule(workingSchedule.id)">Удалить</button>
           </td>
         </tr>

@@ -2,10 +2,20 @@
   <div class="form-group">
     <label for="start">Начало</label>
     <input class="form-control" formControlName="start" id="start" mask="00:00" type="text">
+    @if(!workingScheduleCreateForm.controls.start.valid && workingScheduleCreateForm.controls.start.touched){
+      <div>
+        <small style="color: red">Поле обязательно для заполнения</small>
+      </div>
+    }
   </div>
   <div class="form-group">
     <label for="end">Конец</label>
     <input class="form-control" formControlName="end" id="end" mask="00:00" type="text">
+    @if(!workingScheduleCreateForm.controls.end.valid && workingScheduleCreateForm.controls.end.touched){
+      <div>
+        <small style="color: red">Поле обязательно для заполнения</small>
+      </div>
+    }
   </div>
   <div class="form-group">
     <label for="workingDay">Выберите день:</label>
@@ -18,6 +28,11 @@
       <option value="суббота">Суббота</option>
       <option value="воскресенье">Воскресенье</option>
     </select>
+    @if(!workingScheduleCreateForm.controls.workingDay.valid && workingScheduleCreateForm.controls.workingDay.touched){
+      <div>
+        <small style="color: red">Выберите рабочий день</small>
+      </div>
+    }
   </div>
 
   @if(this.errorMessages['ScheduleExists']){
