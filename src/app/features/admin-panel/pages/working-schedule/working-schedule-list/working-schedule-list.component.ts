@@ -31,7 +31,7 @@ export class WorkingScheduleListComponent extends ListComponent<WorkingScheduleM
   }
 
   public deleteWorkingSchedule(id: number){
-    if (window.confirm('Вы уверены что хотите удалить?')) {
+    if (window.confirm('Подтвердите удаление')) {
       this.workingScheduleService.delete(id).subscribe((response) => {
         this.getItems();
       }, (error) => {

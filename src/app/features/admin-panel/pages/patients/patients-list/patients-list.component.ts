@@ -31,7 +31,7 @@ export class PatientsListComponent extends ListComponent<PatientModel> {
   }
 
   public delete(id: number){
-    if (window.confirm('Вы уверены что хотите удалить?')) {
+    if (window.confirm('Подтвердите удаление')) {
       this.patientService.delete(id).subscribe((response) => {
         this.getItems();
       }, (error) => {

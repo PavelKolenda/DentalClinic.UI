@@ -33,7 +33,7 @@ export class SpecializationsListComponent extends ListComponent<Specialization> 
   }
 
   public delete(id: number){
-    if (window.confirm('Вы уверены что хотите удалить?')) {
+    if (window.confirm('Подтвердите удаление')) {
       this.specializationsService.delete(id).subscribe((response) => {
         this.getItems();
       }, (error) => {

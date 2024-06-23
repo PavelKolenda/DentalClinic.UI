@@ -32,7 +32,7 @@ export class AdminNewsListComponent extends ListComponent<NewsModel> {
   }
 
   public delete(id: number){
-    if (window.confirm('Вы уверены что хотите удалить?')) {
+    if (window.confirm('Подтвердите удаление')) {
       this.newsService.delete(id).subscribe((response) => {
         this.getItems();
       }, (error) => {
