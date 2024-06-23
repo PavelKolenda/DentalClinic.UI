@@ -14,8 +14,8 @@
   @if(items){
     <div class="pagination-wrapper">
       <div class="pagination">
-        <button class="page-button" (click)="previousPage()" [disabled]="!items?.hasPreviousPage">Назад</button>
-        <button class="page-button" (click)="nextPage()" [disabled]="!items?.hasNextPage">Вперед</button>
+        <button class="page-button" (click)="previousPage()" [disabled]="items.hasPreviousPage">Назад</button>
+        <button class="page-button" (click)="nextPage()" [disabled]="items.hasNextPage">Вперед</button>
       </div>
     </div>
   }
