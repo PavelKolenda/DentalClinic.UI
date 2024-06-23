@@ -63,4 +63,10 @@ export class LoginComponent implements OnInit{
       }
     });
   }
+
+  onPasswordInput() {
+    if (this.errorMessages['CredentialsDontExists']) {
+      this.errorMessages['CredentialsDontExists'] = '';
+    }
+  }
 }

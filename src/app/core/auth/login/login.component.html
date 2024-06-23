@@ -15,7 +15,7 @@
     <div>
       <label for="password"><span class="red-color">*</span>Пароль:</label>
       <div>
-        <input type="password" id="password" formControlName="password">
+        <input type="password" id="password" formControlName="password" (input)="onPasswordInput()">
       </div>
       @if (!userLoginForm.controls.password.valid && userLoginForm.controls.password.touched) {
         <small style="color: red;">Минимальная длина пароля 8 символов</small>
